@@ -70,7 +70,7 @@
                     </div>
                     
                     <div class="span10">
-                        {{ $log->links() }}
+                        {{ $paginator->links() }}
                         <div class="well main">
                             @if ( ! $empty)
                                 @foreach ($log as $l)
@@ -80,7 +80,7 @@
                                 <div class="alert alert-block alert-info">{{ Lang::get('logviewer::logviewer.empty', array('sapi' => $sapi, 'date' => $date)) }}</div>
                             @endif
                         </div>
-                        {{ $log->links() }}
+                        {{ $paginator->links() }}
                     </div>
                     
                 </div>
