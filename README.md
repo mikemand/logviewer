@@ -27,7 +27,7 @@ Until this package is ready to go up on Packagist, add the following after the `
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/igorw/monolog"
+            "url": "https://github.com/mikemand/logviewer"
         }
     ]
 ```
