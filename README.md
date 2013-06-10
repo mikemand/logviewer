@@ -1,10 +1,12 @@
 #Laravel 4 LogViewer
 
-Easily view and delete Laravel's logs.
+Easily view and delete Laravel 4's logs.
 
 Inspiration from [Fire Log](https://github.com/dperrymorrow/Fire-Log) for CodeIgniter by [David Morrow](https://github.com/dperrymorrow) and [Larvel Log Viewer](https://github.com/ericbarnes/Laravel-Log-Viewer) for Laravel 3 by [Eric Barnes](https://github.com/ericbarnes)
 
-<insert license info here>
+Created and maintained by Micheal Mand. Copyright &copy; 2013. Licensed under the [DBAD license](http://www.dbad-license.org/).
+
+If anyone has any ideas on how to make this framework agnostic, please contact me or open a pull request.
 
 ##Installation
 
@@ -50,7 +52,9 @@ $ php artisan asset:publish kmd/logviewer
 $ php artisan config:publish kmd/logviewer
 ```
 
-##Usage
+##Usage and Configuration
+
+###Usage
 
 By default, LogViewer will register itself a couple of routes:
 
@@ -61,3 +65,7 @@ By default, LogViewer will register itself a couple of routes:
 LogViewer also registers a filter (`logviewer.logs`) to aggregate all the logs in your `storage_path()/logs/` directory and share them with the `$logs` variable.
 
 Future versions will allow you to specify the names of these routes and add your own filters to them (to, for example, require authentication before viewing and/or deleting logs).
+
+###Configuration
+
+ * `per_page`: The number of log messages to show. Default: 10.
