@@ -3,25 +3,25 @@
 use \Carbon\Carbon;
 use Kmd\Logviewer\Logviewer;
 
-Route::get('log/view', function()
+Route::get('logviewer', function()
 {
     $today = Carbon::today()->format('Y-m-d');
     
-    return Redirect::to('log/apache/'.$today.'/all');
+    return Redirect::to('logviewer/apache/'.$today.'/all');
 });
 
-Route::get('log/{sapi}/{date}/delete', function($sapi, $date)
+Route::get('logviewer/{sapi}/{date}/delete', function($sapi, $date)
 {
     return 'I delete file nao k?';
 });
 
 Route::group(array('before' => 'logviewer.logs'), function()
 {
-    Route::get('log/{sapi}/{date}/{level?}', function($sapi, $date, $level = null)
+    Route::get('logviewer/{sapi}/{date}/{level?}', function($sapi, $date, $level = null)
     {
         if ($level === null)
         {
-            return Redirect::to('log/' . $sapi . '/' . $date . '/all');
+            return Redirect::to('logviewer/' . $sapi . '/' . $date . '/all');
         }
         
         $logviewer = new Logviewer($sapi, $date, $level);

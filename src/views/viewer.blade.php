@@ -3,7 +3,7 @@
     
     <head>
         <meta charset="utf-8">
-        <title>Laravel LogViewer</title>
+        <title>Laravel 4 LogViewer</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         {{ HTML::style('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap.no-icons.min.css') }}
@@ -34,10 +34,10 @@
                     <div class="navbar navbar-static-top navbar-inverse">
                         <div class="navbar-inner">
                             <div class="container-fluid">
-                                {{ HTML::link('log/view', 'Laravel LogViewer', ['class' => 'brand']) }}
+                                {{ HTML::link('logviewer', 'Laravel LogViewer', ['class' => 'brand']) }}
                                 <ul class="nav">
                                     @foreach (Lang::get('logviewer::logviewer.levels') as $level)
-                                        {{ HTML::nav_item('log/' . Request::segment(2) . '/' . Request::segment(3) . '/' . $level, ucfirst($level)) }}
+                                        {{ HTML::nav_item('logviewer/' . Request::segment(2) . '/' . Request::segment(3) . '/' . $level, ucfirst($level)) }}
                                     @endforeach
                                 </ul>
                                 @if ( ! $empty)
@@ -60,7 +60,7 @@
                                         <li class="nav-header">{{ $files['sapi'] }}</li>
                                         <ul class="nav nav-list">
                                             @foreach ($files['logs'] as $file)
-                                                {{ HTML::decode(HTML::nav_item('log/' . $type . '/' . $file . '/' . Request::segment(4), $file)) }}
+                                                {{ HTML::decode(HTML::nav_item('logviewer/' . $type . '/' . $file . '/' . Request::segment(4), $file)) }}
                                             @endforeach
                                         </ul>
                                     @endforeach
@@ -98,7 +98,7 @@
                 <p>Are you sure you want to delete this log?</p>
             </div>
             <div class="modal-footer">
-                {{ HTML::link('log/' . Request::segment(2) . '/' . Request::segment(3) . '/delete', 'Yes', array('class' => 'btn btn-success')) }}
+                {{ HTML::link('logviewer/' . Request::segment(2) . '/' . Request::segment(3) . '/delete', 'Yes', array('class' => 'btn btn-success')) }}
                 <button class="btn btn-danger" data-dismiss="modal">No</button>
             </div>
         </div>
