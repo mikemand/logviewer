@@ -30,11 +30,11 @@ Route::group(array('before' => 'logviewer.logs'), function()
         
         $log = $logviewer->log();
         
-        $page = Paginator::make($log, count($log), 10);
+        $page = Paginator::make($log, count($log), Config::get('logviewer::per_page', 10));
         
         return View::make('logviewer::viewer')
                    ->with('paginator', $page)
-                   ->with('log', array_slice($log, $page->getFrom(), $page->getTo()))
+                   ->with('log', array_slice($log, $page->getFrom(), $page->getPerPage()))
                    ->with('empty', $logviewer->empty)
                    ->with('date', $date)
                    ->with('sapi', Lang::get('logviewer::logviewer.sapi.' . $sapi));
