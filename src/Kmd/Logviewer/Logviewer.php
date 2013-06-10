@@ -7,14 +7,14 @@ class Logviewer {
     public $level;
     public $empty;
     
-    function __construct($sapi, $date, $level = 'all')
+    public function __construct($sapi, $date, $level = 'all')
     {
         $this->sapi = $sapi;
         $this->date = $date;
         $this->level = $level;
     }
     
-    function getLog()
+    public function log()
     {
         $this->empty = true;
         $log = array();
@@ -57,6 +57,11 @@ class Logviewer {
         unset($log_data);
         
         return $log;
+    }
+    
+    public function delete()
+    {
+        return 'I delete file nao, k?';
     }
     
 }

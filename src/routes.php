@@ -12,7 +12,9 @@ Route::get('logviewer', function()
 
 Route::get('logviewer/{sapi}/{date}/delete', function($sapi, $date)
 {
-    return 'I delete file nao k?';
+    $logviewer = new Logviewer($sapi, $date);
+    
+    return $logviewer->delete();
 });
 
 Route::group(array('before' => 'logviewer.logs'), function()
@@ -26,7 +28,7 @@ Route::group(array('before' => 'logviewer.logs'), function()
         
         $logviewer = new Logviewer($sapi, $date, $level);
         
-        $log = $logviewer->getLog();
+        $log = $logviewer->log();
         
         $page = Paginator::make($log, count($log), 10);
         
