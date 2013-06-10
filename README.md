@@ -32,6 +32,24 @@ Until this package is ready to go up on Packagist, add the following after the `
     ]
 ```
 
+Update composer:
+
+```
+$ php composer.phar update
+```
+
+Publish package assets:
+
+```
+$ php artisan asset:publish kmd/logviewer
+```
+
+(Optional) Publish package config:
+
+```
+$ php artisan config:publish kmd/logviewer
+```
+
 ##Usage
 
 By default, LogViewer will register itself a couple of routes:
