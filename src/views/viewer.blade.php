@@ -72,9 +72,13 @@
                     <div class="span10">
                         {{ $log->links() }}
                         <div class="well main">
-                            @foreach ($log as $l)
-                                <div class="alert alert-block alert-{{ $l['level'] }}">{{ $l['log'] }}</div>
-                            @endforeach
+                            @if ( ! $empty)
+                                @foreach ($log as $l)
+                                    <div class="alert alert-block alert-{{ $l['level'] }}">{{ $l['log'] }}</div>
+                                @endforeach
+                            @else
+                                <div class="alert alert-block alert-info">{{ Lang::get('logviewer::logviewer.empty', array('sapi' => $sapi, 'date' => $date)) }}</div>
+                            @endif
                         </div>
                         {{ $log->links() }}
                     </div>

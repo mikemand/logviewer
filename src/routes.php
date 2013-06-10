@@ -56,16 +56,16 @@ Route::group(array('before' => 'logviewer.logs'), function()
                 }
             }
         }
-        else
-        {
-            $log['empty'] = array('level' => 'info', 'log' => 'No log for ' . $date);
-        }
         
         unset($headings);
         unset($log_data);
         
         $page = Paginator::make($log, count($log), 10);
         
-        return View::make('logviewer::viewer')->with('log', $page)->with('empty', $empty);
+        return View::make('logviewer::viewer')
+                   ->with('log', $page)
+                   ->with('empty', $empty)
+                   ->with('date', $date)
+                   ->with('sapi', Lang::get('logviewer::logviewer.sapi.' . $type));
     });
 });
