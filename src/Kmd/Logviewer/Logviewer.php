@@ -45,7 +45,7 @@ class Logviewer {
                         {
                             if (strpos(strtolower($h[$i]), strtolower('log.' . $ll)))
                             {
-                                $log[$i+1] = array('level' => $ll, 'log' => $h[$i] . "\n" . $log_data[$i+1]);
+                                $log[$i+1] = array('level' => $ll, 'header' => $h[$i], 'stack' => $log_data[$i+1]);
                             }
                         }
                     }

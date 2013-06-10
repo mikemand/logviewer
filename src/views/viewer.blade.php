@@ -41,9 +41,9 @@
                                     @endforeach
                                 </ul>
                                 @if ( ! $empty)
-                                <div class="pull-right">
-                                    {{ HTML::link('#delete_modal', Lang::get('logviewer::logviewer.delete'), array('class' => 'btn btn-danger', 'data-toggle' => 'modal', 'data-target' => '#delete_modal')) }}
-                                </div>
+                                    <div class="pull-right">
+                                        {{ HTML::link('#delete_modal', Lang::get('logviewer::logviewer.delete'), array('class' => 'btn btn-danger', 'data-toggle' => 'modal', 'data-target' => '#delete_modal')) }}
+                                    </div>
                                 @endif
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                 <div class="row-fluid">
                     
                     <div class="span2">
-                        <div class="well sidebar-nav">
+                        <div id="nav" class="well">
                             <ul class="nav nav-list">
                                 @if ($logs)
                                     @foreach ($logs as $type => $files)
@@ -71,13 +71,19 @@
                     
                     <div class="span10">
                         {{ $paginator->links() }}
-                        <div class="well main">
+                        <div id="log" class="well">
                             @if ( ! $empty)
                                 @foreach ($log as $l)
-                                    <div class="alert alert-block alert-{{ $l['level'] }}">{{ $l['log'] }}</div>
+                                    <div class="alert alert-block alert-{{ $l['level'] }}">
+                                        <span title="Click to toggle stack trace" class="toggle-stack"><i class="icon-expand-alt"></i></span>
+                                        <span class="stack-header">{{ $l['header'] }}</span>
+                                        <pre class="stack-trace">{{ $l['stack'] }}</pre>
+                                    </div>
                                 @endforeach
                             @else
-                                <div class="alert alert-block alert-info">{{ Lang::get('logviewer::logviewer.empty', array('sapi' => $sapi, 'date' => $date)) }}</div>
+                                <div class="alert alert-block alert-info">
+                                    {{ Lang::get('logviewer::logviewer.empty', array('sapi' => $sapi, 'date' => $date)) }}
+                                </div>
                             @endif
                         </div>
                         {{ $paginator->links() }}
@@ -104,9 +110,9 @@
         </div>
         
         {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') }}
-        <script>window.jQuery || document.write('<script src="{{ URL::to("logviewer::public/assets/js/jquery-1.9.1.min.js") }}"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="{{ URL::to("packages/kmd/logviewer/js/jquery-1.9.1.min.js") }}"><\/script>')</script>
         {{ HTML::script('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js') }}
-        {{ HTML::script('assets/js/script.js') }}
+        {{ HTML::script('packages/kmd/logviewer/js/script.js') }}
         
     </body>
     
