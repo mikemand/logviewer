@@ -1,5 +1,6 @@
 <?php
 
+// Inspired from: http://forums.laravel.io/viewtopic.php?id=827
 HTML::macro('nav_item', function($url, $text, $a_attr = [], $active_class = 'active', $li_attrs = [])
 {
     $href = HTML::link($url, $text, $a_attr);
