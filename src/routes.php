@@ -46,11 +46,14 @@ Route::group(array('before' => 'logviewer.logs'), function()
             {
                 for ($i=0; $i < count($h); $i++)
                 {
-                    foreach ($log_levels as $level)
+                    foreach ($log_levels as $ll)
                     {
-                        if (strpos(strtolower($h[$i]), strtolower('log.' . $level)))
+                        if ($level == $ll OR $level == 'all')
                         {
-                            $log[$i+1] = array('level' => $level, 'log' => $h[$i] . "\n" . $log_data[$i+1]);
+                            if (strpos(strtolower($h[$i]), strtolower('log.' . $ll)))
+                            {
+                                $log[$i+1] = array('level' => $ll, 'log' => $h[$i] . "\n" . $log_data[$i+1]);
+                            }
                         }
                     }
                 }
