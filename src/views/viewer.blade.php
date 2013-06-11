@@ -42,7 +42,7 @@
                                 </ul>
                                 @if ( ! $empty)
                                     <div class="pull-right">
-                                        {{ HTML::link('#delete_modal', Lang::get('logviewer::logviewer.delete'), array('class' => 'btn btn-danger', 'data-toggle' => 'modal', 'data-target' => '#delete_modal')) }}
+                                        {{ HTML::link('#delete_modal', Lang::get('logviewer::logviewer.delete.text'), array('class' => 'btn btn-danger', 'data-toggle' => 'modal', 'data-target' => '#delete_modal')) }}
                                     </div>
                                 @endif
                             </div>
@@ -70,27 +70,53 @@
                     </div>
                     
                     <div class="span10">
-                        {{ $paginator->links() }}
-                        <div id="log" class="well">
-                            @if ( ! $empty && ! empty($log))
-                                @foreach ($log as $l)
-                                    <div class="alert alert-block alert-{{ $l['level'] }}">
-                                        <span title="Click to toggle stack trace" class="toggle-stack"><i class="icon-expand-alt"></i></span>
-                                        <span class="stack-header">{{ $l['header'] }}</span>
-                                        <pre class="stack-trace">{{ $l['stack'] }}</pre>
+                        <div class="row-fluid{{ ! $has_messages ? ' hidden' : '' }}">
+                            <div class="span12" id="messages">
+                                @if (Session::has('success'))
+                                    <div class="alert alert-success">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        {{ Session::get('success') }}
                                     </div>
-                                @endforeach
-                            @elseif ( ! $empty && empty($log))
-                                <div class="alert alert-block">
-                                    {{ Lang::get('logviewer::logviewer.empty_file', array('sapi' => $sapi, 'date' => $date)) }}
-                                </div>
-                            @else
-                                <div class="alert alert-block">
-                                    {{ Lang::get('logviewer::logviewer.no_log', array('sapi' => $sapi, 'date' => $date)) }}
-                                </div>
-                            @endif
+                                @endif
+                                @if (Session::has('error'))
+                                    <div class="alert alert-error">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        {{ Session::get('error') }}
+                                    </div>
+                                @endif
+                                @if (Session::has('info'))
+                                    <div class="alert alert-info">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        {{ Session::get('info') }}
+                                    </div>
+                                @endif
+                            </div>
                         </div>
-                        {{ $paginator->links() }}
+                        <div class="row-fluid">
+                            <div class="span12">
+                                {{ $paginator->links() }}
+                                <div id="log" class="well">
+                                    @if ( ! $empty && ! empty($log))
+                                        @foreach ($log as $l)
+                                            <div class="alert alert-block alert-{{ $l['level'] }}">
+                                                <span title="Click to toggle stack trace" class="toggle-stack"><i class="icon-expand-alt"></i></span>
+                                                <span class="stack-header">{{ $l['header'] }}</span>
+                                                <pre class="stack-trace">{{ $l['stack'] }}</pre>
+                                            </div>
+                                        @endforeach
+                                    @elseif ( ! $empty && empty($log))
+                                        <div class="alert alert-block">
+                                            {{ Lang::get('logviewer::logviewer.empty_file', array('sapi' => $sapi, 'date' => $date)) }}
+                                        </div>
+                                    @else
+                                        <div class="alert alert-block">
+                                            {{ Lang::get('logviewer::logviewer.no_log', array('sapi' => $sapi, 'date' => $date)) }}
+                                        </div>
+                                    @endif
+                                </div>
+                                {{ $paginator->links() }}
+                            </div>
+                        </div>
                     </div>
                     
                 </div>

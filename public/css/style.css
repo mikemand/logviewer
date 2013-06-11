@@ -15,6 +15,11 @@ pre {
     margin-top: 20px;
 }
 
+.alert .close {
+    top: 0;
+    right: 0;
+}
+
 .toggle-stack {
     font-size: 18px;
     color: #000000;

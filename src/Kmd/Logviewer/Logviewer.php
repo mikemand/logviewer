@@ -67,7 +67,12 @@ class Logviewer {
     
     public function delete()
     {
-        return 'I delete file nao, k?';
+        $log_file = glob(storage_path() . '/logs/log-' . $this->sapi . '*-' . $this->date . '.txt');
+        
+        if ( ! empty($log_file))
+        {
+            return \File::delete($log_file[0]);
+        }
     }
     
 }

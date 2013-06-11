@@ -21,3 +21,15 @@ Route::filter('logviewer.logs', function()
     
     View::share('logs', $logs);
 });
+
+Route::filter('logviewer.messages', function()
+{
+    if (Session::has('success') OR Session::has('error') OR Session::has('info'))
+    {
+        View::share('has_messages', true);
+    }
+    else
+    {
+        View::share('has_messages', false);
+    }
+});

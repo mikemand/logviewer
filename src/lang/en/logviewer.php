@@ -4,7 +4,11 @@ use Psr\Log\LogLevel;
 
 return [
     
-    'delete' => 'Delete Current Log',
+    'delete' => array(
+        'error' => 'There was an error while deleting the log.',
+        'success' => 'Log deleted successfully!',
+        'text' => 'Delete Current Log',
+    ),
     'empty_file'  => ':sapi log for :date appears to be empty. Did you manually delete the contents?',
     'levels' => [
         'all' => 'all',
