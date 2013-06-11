@@ -81,7 +81,7 @@
                                     </div>
                                 @endforeach
                             @else
-                                <div class="alert alert-block alert-info">
+                                <div class="alert alert-block">
                                     {{ Lang::get('logviewer::logviewer.empty', array('sapi' => $sapi, 'date' => $date)) }}
                                 </div>
                             @endif

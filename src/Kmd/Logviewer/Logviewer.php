@@ -14,6 +14,11 @@ class Logviewer {
         $this->level = $level;
     }
     
+    public function isEmpty()
+    {
+        return $this->empty;
+    }
+    
     public function log()
     {
         $this->empty = true;
@@ -30,13 +35,29 @@ class Logviewer {
             $this->empty = false;
             $file = \File::get($log_file[0]);
             
+            // There has GOT to be a better way of doing this...
             preg_match_all($pattern, $file, $headings);
+            if (empty($headings))
+            {
+                $this->empty = true;
+                return $log;
+            }
             $log_data = preg_split($pattern, $file);
+            if (empty($log_data))
+            {
+                $this->empty = true;
+                return $log;
+            }
             
             unset($log_data[0]);
             
             foreach ($headings as $h)
             {
+                if (empty($h))
+                {
+                    $this->empty = true;
+                    return $log;
+                }
                 for ($i=0; $i < count($h); $i++)
                 {
                     foreach ($log_levels as $ll)

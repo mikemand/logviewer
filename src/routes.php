@@ -34,8 +34,8 @@ Route::group(array('before' => 'logviewer.logs'), function()
         
         return View::make('logviewer::viewer')
                    ->with('paginator', $page)
-                   ->with('log', array_slice($log, $page->getFrom(), $page->getPerPage()))
-                   ->with('empty', $logviewer->empty)
+                   ->with('log', (count($log) > $page->getPerPage() ? array_slice($log, $page->getFrom(), $page->getPerPage()) : $log))
+                   ->with('empty', $logviewer->isEmpty())
                    ->with('date', $date)
                    ->with('sapi', Lang::get('logviewer::logviewer.sapi.' . $sapi));
     });
