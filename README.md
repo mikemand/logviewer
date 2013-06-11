@@ -23,17 +23,6 @@ Add `kmd/logviewer` as a requirement to `composer.json`:
 }
 ```
 
-Until this package is ready to go up on Packagist, add the following after the `require` line:
-
-```javascript
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/mikemand/logviewer"
-        }
-    ]
-```
-
 Update composer:
 
 ```
@@ -68,4 +57,4 @@ Future versions will allow you to specify the names of these routes and add your
 
 ###Configuration
 
- * `per_page`: The number of log messages to show. Default: 10.
+ * `per_page`: The number of log messages to show per page via Pagination. Default: 10.
