@@ -5,7 +5,7 @@ use Psr\Log\LogLevel;
 return [
     
     'delete' => 'Delete Current Log',
-    'empty'  => 'No :sapi log available for :date.',
+    'empty_file'  => ':sapi log for :date appears to be empty. Did you manually delete the contents?',
     'levels' => [
         'all' => 'all',
         'emergency' => LogLevel::EMERGENCY,
@@ -17,6 +17,7 @@ return [
         'info' => LogLevel::INFO,
         'debug' => LogLevel::DEBUG,
     ],
+    'no_log'  => 'No :sapi log available for :date.',
     'sapi'   => [
         'apache' => 'Apache',
         'cli' => 'CLI'

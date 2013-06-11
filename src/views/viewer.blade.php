@@ -72,7 +72,7 @@
                     <div class="span10">
                         {{ $paginator->links() }}
                         <div id="log" class="well">
-                            @if ( ! $empty)
+                            @if ( ! $empty && ! empty($log))
                                 @foreach ($log as $l)
                                     <div class="alert alert-block alert-{{ $l['level'] }}">
                                         <span title="Click to toggle stack trace" class="toggle-stack"><i class="icon-expand-alt"></i></span>
@@ -80,9 +80,13 @@
                                         <pre class="stack-trace">{{ $l['stack'] }}</pre>
                                     </div>
                                 @endforeach
+                            @elseif ( ! $empty && empty($log))
+                                <div class="alert alert-block">
+                                    {{ Lang::get('logviewer::logviewer.empty_file', array('sapi' => $sapi, 'date' => $date)) }}
+                                </div>
                             @else
                                 <div class="alert alert-block">
-                                    {{ Lang::get('logviewer::logviewer.empty', array('sapi' => $sapi, 'date' => $date)) }}
+                                    {{ Lang::get('logviewer::logviewer.no_log', array('sapi' => $sapi, 'date' => $date)) }}
                                 </div>
                             @endif
                         </div>
