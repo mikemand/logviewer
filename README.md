@@ -53,8 +53,11 @@ By default, LogViewer will register itself a couple of routes:
 
 LogViewer also registers a filter (`logviewer.logs`) to aggregate all the logs in your `storage_path()/logs/` directory and share them with the `$logs` variable.
 
-Future versions will allow you to specify the names of these routes and add your own filters to them (to, for example, require authentication before viewing and/or deleting logs).
-
 ###Configuration
 
  * `per_page`: The number of log messages to show per page via Pagination. Default: 10.
+
+##TODO, Upcoming, etc.
+
+ * Need to finish setting up the highlights for all log levels.
+ * Allow users to specify the names of the routes and add their own filters to them (to, for example, require authentication before viewing and/or deleting logs).
