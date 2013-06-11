@@ -14,7 +14,7 @@
         }
     ],
     "license": [
-        "DBAD"
+        "MIT"
     ],
     "require": {
         "php": ">=5.3.7",
