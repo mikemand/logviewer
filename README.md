@@ -4,7 +4,7 @@ Easily view and delete Laravel 4's logs.
 
 Inspiration from [Fire Log](https://github.com/dperrymorrow/Fire-Log) for CodeIgniter by [David Morrow](https://github.com/dperrymorrow) and [Larvel Log Viewer](https://github.com/ericbarnes/Laravel-Log-Viewer) for Laravel 3 by [Eric Barnes](https://github.com/ericbarnes)
 
-Created and maintained by Micheal Mand. Copyright &copy; 2013. Licensed under the [DBAD license](http://www.dbad-license.org/).
+Created and maintained by Micheal Mand. Copyright &copy; 2013. Licensed under the [MIT license](LICENSE.md).
 
 If anyone has any ideas on how to make this framework agnostic, please contact me or open a pull request.
 
