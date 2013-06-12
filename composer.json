@@ -20,7 +20,7 @@
         "php": ">=5.3.7",
         "illuminate/support": "4.0.x",
         "illuminate/filesystem": "4.0.x",
-        "symfony/finder": "2.2.*"
+        "symfony/finder": "2.3.*"
     },
     "autoload": {
         "classmap": [
