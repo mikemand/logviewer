@@ -9,8 +9,7 @@ Route::filter('logviewer.logs', function()
         $files = array_reverse(glob(storage_path().'/logs/log-'.$sapi.'*'));
         foreach ($files as &$file)
         {
-            $file = preg_replace('/log-.+?-/', '', basename($file, '.txt'));
-            // $file = preg_replace('/.*(\d{4}-\d{2}-\d{2}).*/', '$1', basename($file)); // Is this faster?
+            $file = preg_replace('/.*(\d{4}-\d{2}-\d{2}).*/', '$1', basename($file));
         }
         $logs[$sapi]['logs'] = $files;
     }
