@@ -57,12 +57,14 @@
                             <ul class="nav nav-list">
                                 @if ($logs)
                                     @foreach ($logs as $type => $files)
-                                        <li class="nav-header">{{ $files['sapi'] }}</li>
-                                        <ul class="nav nav-list">
-                                            @foreach ($files['logs'] as $file)
-                                                {{ HTML::decode(HTML::nav_item('logviewer/' . $type . '/' . $file . '/' . Request::segment(4), $file)) }}
-                                            @endforeach
-                                        </ul>
+                                        @if ( ! empty($files['logs']))
+                                            <li class="nav-header">{{ $files['sapi'] }}</li>
+                                            <ul class="nav nav-list">
+                                                @foreach ($files['logs'] as $file)
+                                                    {{ HTML::decode(HTML::nav_item('logviewer/' . $type . '/' . $file . '/' . Request::segment(4), $file)) }}
+                                                @endforeach
+                                            </ul>
+                                        @endif
                                     @endforeach
                                 @endif
                             </ul>
