@@ -9,7 +9,10 @@ Route::group(array('before' => 'logviewer.messages'), function ()
     {
         $today = Carbon::today()->format('Y-m-d');
         
-        Session::reflash();
+        if (Session::has('success') || Session::has('error'))
+        {
+            Session::reflash();
+        }
         return Redirect::to('logviewer/apache/'.$today.'/all');
     });
 
