@@ -29,6 +29,17 @@ Update composer:
 $ php composer.phar update
 ```
 
+Add the provider to your `app/config/app.php`:
+
+```php
+'providers' => array(
+
+    ...
+    'Kmd\Logviewer\LogviewerServiceProvider',
+
+),
+```
+
 Publish package assets:
 
 ```
