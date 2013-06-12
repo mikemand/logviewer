@@ -100,11 +100,18 @@
                                 <div id="log" class="well">
                                     @if ( ! $empty && ! empty($log))
                                         @foreach ($log as $l)
-                                            <div class="alert alert-block alert-{{ $l['level'] }}">
-                                                <span title="Click to toggle stack trace" class="toggle-stack"><i class="icon-expand-alt"></i></span>
-                                                <span class="stack-header">{{ $l['header'] }}</span>
-                                                <pre class="stack-trace">{{ $l['stack'] }}</pre>
-                                            </div>
+                                            @if (strlen($l['stack']) > 1)
+                                                <div class="alert alert-block alert-{{ $l['level'] }}">
+                                                    <span title="Click to toggle stack trace" class="toggle-stack"><i class="icon-expand-alt"></i></span>
+                                                    <span class="stack-header">{{ $l['header'] }}</span>
+                                                    <pre class="stack-trace">{{ $l['stack'] }}</pre>
+                                                </div>
+                                            @else
+                                                <div class="alert alert-block alert-{{ $l['level'] }}">
+                                                    <span class="toggle-stack">&nbsp;&nbsp;</span>
+                                                    <span class="stack-header">{{ $l['header'] }}</span>
+                                                </div>
+                                            @endif
                                         @endforeach
                                     @elseif ( ! $empty && empty($log))
                                         <div class="alert alert-block">
