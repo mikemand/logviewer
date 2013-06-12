@@ -7,13 +7,18 @@ Route::group(array('before' => 'logviewer.messages'), function ()
 {
     Route::get('logviewer', function ()
     {
+        $sapi = php_sapi_name();
+        if (preg_match('/apache.*/', $sapi))
+        {
+            $sapi = 'apache';
+        }
         $today = Carbon::today()->format('Y-m-d');
         
         if (Session::has('success') || Session::has('error'))
         {
             Session::reflash();
         }
-        return Redirect::to('logviewer/apache/'.$today.'/all');
+        return Redirect::to('logviewer/' . $sapi . '/' . $today . '/all');
     });
 
     Route::get('logviewer/{sapi}/{date}/delete', function ($sapi, $date)
