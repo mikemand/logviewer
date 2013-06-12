@@ -8,6 +8,10 @@ Created and maintained by Micheal Mand. Copyright &copy; 2013. Licensed under th
 
 If anyone has any ideas on how to make this framework agnostic, please contact me or open a pull request.
 
+##Demo
+
+[View the demo here](http://logviewer.kmdwebdesigns.com/logviewer)
+
 ##Installation
 
 Add `kmd/logviewer` as a requirement to `composer.json`:
