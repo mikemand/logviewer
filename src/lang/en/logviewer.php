@@ -2,7 +2,7 @@
 
 use Psr\Log\LogLevel;
 
-return [
+return array(
     
     'delete' => array(
         'error' => 'There was an error while deleting the log.',
@@ -10,7 +10,7 @@ return [
         'text' => 'Delete Current Log',
     ),
     'empty_file'  => ':sapi log for :date appears to be empty. Did you manually delete the contents?',
-    'levels' => [
+    'levels' => array(
         'all' => 'all',
         'emergency' => LogLevel::EMERGENCY,
         'alert' => LogLevel::ALERT,
@@ -20,11 +20,13 @@ return [
         'notice' => LogLevel::NOTICE,
         'info' => LogLevel::INFO,
         'debug' => LogLevel::DEBUG,
-    ],
+    ),
     'no_log'  => 'No :sapi log available for :date.',
-    'sapi'   => [
+    // @TODO Find out what sapi nginx, IIS, etc. show up as.
+    'sapi'   => array(
         'apache' => 'Apache',
-        'cli' => 'CLI'
-    ],
+        'cgi-fcgi' => 'Fast CGI',
+        'cli' => 'CLI',
+    ),
     
-];
+);
