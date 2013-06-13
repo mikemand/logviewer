@@ -63,7 +63,7 @@ $ php artisan config:publish kmd/logviewer
 By default, LogViewer will register itself a couple of routes:
 
  * `logviewer` -> Redirect to today's log, showing all levels.
- * `logviewer/$sapi/$date/delete` -> Delete log from `$sapi` (see: [php_sapi_name](http://php.net/manual/en/function.php-sapi-name.php)) on `$date` (`Y-m-d` format).
+ * `logviewer/$sapi/$date/delete` -> Delete log from `$sapi` (see: [php\_sapi\_name](http://php.net/manual/en/function.php-sapi-name.php)) on `$date` (`Y-m-d` format).
  * `logviewer/$sapi/$date/$level?` -> Show log from `$sapi` on `$date` with `$level` (if not supplied, defaults to all).
 
 LogViewer also registers a filter (`logviewer.logs`) to aggregate all the logs in your `storage_path()/logs/` directory and share them with the `$logs` variable.
