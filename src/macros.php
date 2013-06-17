@@ -1,7 +1,7 @@
 <?php
 
 // Inspired from: http://forums.laravel.io/viewtopic.php?id=827
-HTML::macro('nav_item', function($url, $text, $a_attr = [], $active_class = 'active', $li_attrs = [])
+HTML::macro('nav_item', function($url, $text, $a_attr = array(), $active_class = 'active', $li_attrs = array())
 {
     $href = HTML::link($url, $text, $a_attr);
     $response = '';
