@@ -34,7 +34,7 @@
                     <div class="navbar navbar-static-top navbar-inverse">
                         <div class="navbar-inner">
                             <div class="container-fluid">
-                                {{ HTML::link('logviewer', 'Laravel LogViewer', ['class' => 'brand']) }}
+                                {{ HTML::link('logviewer', 'Laravel LogViewer', array('class' => 'brand')) }}
                                 <ul class="nav">
                                     @foreach (Lang::get('logviewer::logviewer.levels') as $level)
                                         {{ HTML::nav_item('logviewer/' . Request::segment(2) . '/' . Request::segment(3) . '/' . $level, ucfirst($level)) }}
