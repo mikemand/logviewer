@@ -25,7 +25,6 @@ return array(
     // @TODO Find out what sapi nginx, IIS, etc. show up as.
     'sapi'   => array(
         'apache' => 'Apache',
-        'apache2handler' => 'Apache',
         'cgi-fcgi' => 'Fast CGI',
         'cli' => 'CLI',
     ),
