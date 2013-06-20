@@ -1,7 +1,7 @@
 <?php
 
-use \Carbon\Carbon;
-use \Kmd\Logviewer\Logviewer;
+use Carbon\Carbon;
+use Kmd\Logviewer\Logviewer;
 
 Route::group(array('before' => 'logviewer.messages'), function ()
 {

@@ -1,5 +1,8 @@
 <?php namespace Kmd\Logviewer;
 
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Lang;
+
 class Logviewer {
     
     public $sapi;
@@ -26,14 +29,14 @@ class Logviewer {
         
         $pattern = "/\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.*/";
         
-        $log_levels = \Lang::get('logviewer::logviewer.levels');
+        $log_levels = Lang::get('logviewer::logviewer.levels');
         
         $log_file = glob(storage_path() . '/logs/log-' . $this->sapi . '*-' . $this->date . '.txt');
         
         if ( ! empty($log_file))
         {
             $this->empty = false;
-            $file = \File::get($log_file[0]);
+            $file = File::get($log_file[0]);
             
             // There has GOT to be a better way of doing this...
             preg_match_all($pattern, $file, $headings);
@@ -71,7 +74,7 @@ class Logviewer {
         
         if ( ! empty($log_file))
         {
-            return \File::delete($log_file[0]);
+            return File::delete($log_file[0]);
         }
     }
     
