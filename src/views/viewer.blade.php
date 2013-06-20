@@ -3,7 +3,7 @@
     
     <head>
         <meta charset="utf-8">
-        <title>Laravel 4 LogViewer</title>
+        <title>{{ Lang::get('logviewer::logviewer.title') }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         {{ HTML::style('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap.no-icons.min.css') }}
@@ -34,7 +34,7 @@
                     <div class="navbar navbar-static-top navbar-inverse">
                         <div class="navbar-inner">
                             <div class="container-fluid">
-                                {{ HTML::link('logviewer', 'Laravel LogViewer', array('class' => 'brand')) }}
+                                {{ HTML::link('logviewer', Lang::get('logviewer::logviewer.title'), array('class' => 'brand')) }}
                                 <ul class="nav">
                                     @foreach (Lang::get('logviewer::logviewer.levels') as $level)
                                         {{ HTML::nav_item('logviewer/' . Request::segment(2) . '/' . Request::segment(3) . '/' . $level, ucfirst($level)) }}
@@ -42,7 +42,7 @@
                                 </ul>
                                 @if ( ! $empty)
                                     <div class="pull-right">
-                                        {{ HTML::link('#delete_modal', Lang::get('logviewer::logviewer.delete.text'), array('class' => 'btn btn-danger', 'data-toggle' => 'modal', 'data-target' => '#delete_modal')) }}
+                                        {{ HTML::link('#delete_modal', Lang::get('logviewer::logviewer.delete.btn'), array('class' => 'btn btn-danger', 'data-toggle' => 'modal', 'data-target' => '#delete_modal')) }}
                                     </div>
                                 @endif
                             </div>
@@ -137,14 +137,14 @@
         <div id="delete_modal" class="modal hide fade">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h3>Are you sure?</h3>
+                <h3>{{ Lang::get('logviewer::logviewer.delete.modal.header') }}</h3>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to delete this log?</p>
+                <p>{{ Lang::get('logviewer::logviewer.delete.modal.body') }}</p>
             </div>
             <div class="modal-footer">
-                {{ HTML::link('logviewer/' . Request::segment(2) . '/' . Request::segment(3) . '/delete', 'Yes', array('class' => 'btn btn-success')) }}
-                <button class="btn btn-danger" data-dismiss="modal">No</button>
+                {{ HTML::link('logviewer/' . Request::segment(2) . '/' . Request::segment(3) . '/delete', Lang::get('logviewer::logviewer.delete.modal.btn.yes'), array('class' => 'btn btn-success')) }}
+                <button class="btn btn-danger" data-dismiss="modal">{{ Lang::get('logviewer::logviewer.delete.modal.btn.no') }}</button>
             </div>
         </div>
         
