@@ -4,25 +4,29 @@ use Carbon\Carbon;
 use Kmd\Logviewer\Logviewer;
 
 $filters = Config::get('logviewer::filters.global');
-if(isset($filters['before']))
+if (isset($filters['before']))
 {
-	if(!is_array($filters['before']))
-	{
-		$filters['before'] = explode('|', $filters['before']);
-	}
+    if ( ! is_array($filters['before']))
+    {
+        $filters['before'] = explode('|', $filters['before']);
+    }
 }
 else
-	$filters['before'] = array();
+{
+    $filters['before'] = array();
+}
 $filters['before'][] = 'logviewer.messages';
-if(isset($filters['after']))
+if (isset($filters['after']))
 {
-	if(!is_array($filters['after']))
-	{
-		$filters['after'] = explode('|', $filters['after']);
-	}
+    if ( ! is_array($filters['after']))
+    {
+        $filters['after'] = explode('|', $filters['after']);
+    }
 }
 else
-	$filters['after'] = array();
+{
+    $filters['after'] = array();
+}
 Route::group(array('before' => $filters['before'], 'after' => $filters['after']), function ()
 {
     Route::get('logviewer', function ()
@@ -41,26 +45,30 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
         return Redirect::to('logviewer/' . $sapi . '/' . $today . '/all');
     });
 
-	$filters = Config::get('logviewer::filters.delete');
-	if(isset($filters['before']))
-	{
-		if(!is_array($filters['before']))
-		{
-			$filters['before'] = explode('|', $filters['before']);
-		}
-	}
-	else
-		$filters['before'] = array();
-	if(isset($filters['after']))
-	{
-		if(!is_array($filters['after']))
-		{
-			$filters['after'] = explode('|', $filters['after']);
-		}
-	}
-	else
-		$filters['after'] = array();
-	Route::get('logviewer/{sapi}/{date}/delete', array('before' => $filters['before'], 'after' => $filters['after'], function ($sapi, $date)
+    $filters = Config::get('logviewer::filters.delete');
+    if (isset($filters['before']))
+    {
+        if ( ! is_array($filters['before']))
+        {
+            $filters['before'] = explode('|', $filters['before']);
+        }
+    }
+    else
+    {
+        $filters['before'] = array();
+    }
+    if (isset($filters['after']))
+    {
+        if ( ! is_array($filters['after']))
+        {
+            $filters['after'] = explode('|', $filters['after']);
+        }
+    }
+    else
+    {
+        $filters['after'] = array();
+    }
+    Route::get('logviewer/{sapi}/{date}/delete', array('before' => $filters['before'], 'after' => $filters['after'], function ($sapi, $date)
     {
         $logviewer = new Logviewer($sapi, $date);
         
@@ -75,29 +83,33 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
         }
     }));
 
-	$filters = Config::get('logviewer::filters.view');
-	if(isset($filters['before']))
-	{
-		if(!is_array($filters['before']))
-		{
-			$filters['before'] = explode('|', $filters['before']);
-		}
-	}
-	else
-		$filters['before'] = array();
-    $filters['before'][] = 'logviewer.logs';
-	if(isset($filters['after']))
-	{
-		if(!is_array($filters['after']))
-		{
-			$filters['after'] = explode('|', $filters['after']);
-		}
-	}
-	else
-		$filters['after'] = array();
-	Route::group(array('before' => $filters['before'], 'after' => $filters['after']), function ()
+    $filters = Config::get('logviewer::filters.view');
+    if (isset($filters['before']))
     {
-		Route::get('logviewer/{sapi}/{date}/{level?}', function ($sapi, $date, $level = null)
+        if ( ! is_array($filters['before']))
+        {
+            $filters['before'] = explode('|', $filters['before']);
+        }
+    }
+    else
+    {
+        $filters['before'] = array();
+    }
+    $filters['before'][] = 'logviewer.logs';
+    if (isset($filters['after']))
+    {
+        if ( ! is_array($filters['after']))
+        {
+            $filters['after'] = explode('|', $filters['after']);
+        }
+    }
+    else
+    {
+        $filters['after'] = array();
+    }
+    Route::group(array('before' => $filters['before'], 'after' => $filters['after']), function ()
+    {
+        Route::get('logviewer/{sapi}/{date}/{level?}', function ($sapi, $date, $level = null)
         {
             if ($level === null)
             {
