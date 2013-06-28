@@ -71,8 +71,7 @@ LogViewer also registers a filter (`logviewer.logs`) to aggregate all the logs i
 ###Configuration
 
  * `per_page`: The number of log messages to show per page via Pagination. Default: 10.
-
-##TODO, Upcoming, etc.
-
- * Need to finish setting up the highlights for all log levels.
- * Allow users to specify the names of the routes and add their own filters to them (to, for example, require authentication before viewing and/or deleting logs).
+ * `filters`: Before and After filters to apply to the routes. We define no filters by default, as not everyone uses authentication or the same filter names.
+   * `global`: Filters that affect the entirety of the logviewer. For example: `'global' => array('before' => 'auth'),` will apply the default Laravel `auth` filter to the logviewer, requiring a logged in user for all routes.
+   * `view`: Filters that affect the viewing of log files.
+   * `delete`: Filter that affect the deletion of log files.
