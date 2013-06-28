@@ -5,7 +5,7 @@ use Kmd\Logviewer\Logviewer;
 
 Route::group(array('before' => 'logviewer.messages'), function ()
 {
-    Route::get('logviewer', function ()
+    Route::get(Config::get('logviewer::base_url'), function ()
     {
         $sapi = php_sapi_name();
         if (preg_match('/apache.*/', $sapi))
@@ -18,30 +18,30 @@ Route::group(array('before' => 'logviewer.messages'), function ()
         {
             Session::reflash();
         }
-        return Redirect::to('logviewer/' . $sapi . '/' . $today . '/all');
+        return Redirect::to(Config::get('logviewer::base_url').'/' . $sapi . '/' . $today . '/all');
     });
 
-    Route::get('logviewer/{sapi}/{date}/delete', function ($sapi, $date)
+    Route::get(Config::get('logviewer::base_url').'/{sapi}/{date}/delete', function ($sapi, $date)
     {
         $logviewer = new Logviewer($sapi, $date);
         
         if ($logviewer->delete())
         {
-            return Redirect::to('logviewer')->with('success', Lang::get('logviewer::logviewer.delete.success'));
+            return Redirect::to(Config::get('logviewer::base_url'))->with('success', Lang::get('logviewer::logviewer.delete.success'));
         }
         else
         {
-            return Redirect::to('logviewer')->with('error', Lang::get('logviewer::logviewer.delete.error'));
+            return Redirect::to(Config::get('logviewer::base_url'))->with('error', Lang::get('logviewer::logviewer.delete.error'));
         }
     });
 
     Route::group(array('before' => 'logviewer.logs'), function ()
     {
-        Route::get('logviewer/{sapi}/{date}/{level?}', function ($sapi, $date, $level = null)
+        Route::get(Config::get('logviewer::base_url').'/{sapi}/{date}/{level?}', function ($sapi, $date, $level = null)
         {
             if ($level === null)
             {
-                return Redirect::to('logviewer/' . $sapi . '/' . $date . '/all');
+                return Redirect::to(Config::get('logviewer::base_url').'/' . $sapi . '/' . $date . '/all');
             }
             
             $logviewer = new Logviewer($sapi, $date, $level);
@@ -55,7 +55,8 @@ Route::group(array('before' => 'logviewer.messages'), function ()
                        ->with('log', (count($log) > $page->getPerPage() ? array_slice($log, $page->getFrom(), $page->getPerPage()) : $log))
                        ->with('empty', $logviewer->isEmpty())
                        ->with('date', $date)
-                       ->with('sapi', Lang::get('logviewer::logviewer.sapi.' . $sapi));
+                       ->with('sapi', Lang::get('logviewer::logviewer.sapi.' . $sapi))
+					   ->with('url', Config::get('logviewer::base_url'));
         });
     });
 });
