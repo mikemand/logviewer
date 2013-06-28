@@ -56,6 +56,7 @@ Route::group(array('before' => 'logviewer.messages'), function ()
                        ->with('empty', $logviewer->isEmpty())
                        ->with('date', $date)
                        ->with('sapi', Lang::get('logviewer::logviewer.sapi.' . $sapi))
+					   ->with('sapi_plain', $sapi)
 					   ->with('url', Config::get('logviewer::base_url'));
         });
     });
