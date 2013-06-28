@@ -66,11 +66,12 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
         
         if ($logviewer->delete())
         {
-            return Redirect::to('logviewer')->with('success', Lang::get('logviewer::logviewer.delete.success'));
+            $today = Carbon::today()->format('Y-m-d');
+            return Redirect::to('logviewer/'.$sapi.'/'.$today.'/all')->with('success', Lang::get('logviewer::logviewer.delete.success'));
         }
         else
         {
-            return Redirect::to('logviewer')->with('error', Lang::get('logviewer::logviewer.delete.error'));
+            return Redirect::to('logviewer/'.$sapi.'/'.$date.'/all')->with('error', Lang::get('logviewer::logviewer.delete.error'));
         }
     }));
 
@@ -100,7 +101,7 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
         {
             if ($level === null)
             {
-                return Redirect::to('logviewer/' . $sapi . '/' . $date . '/all');
+                $level = 'all';
             }
             
             $logviewer = new Logviewer($sapi, $date, $level);
