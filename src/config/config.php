@@ -8,5 +8,6 @@ return array(
         'view'   => array(),
         'delete' => array(),
     ),
+    'base_url' => 'logviewer',
 
 );
