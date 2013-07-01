@@ -1,13 +1,13 @@
 <?php
 
 return array(
-
-    'per_page' => 10,
+    
+    'base_url' => 'logviewer',
     'filters' => array(
         'global' => array(),
         'view'   => array(),
         'delete' => array(),
     ),
-    'base_url' => 'logviewer',
-
+    'per_page' => 10,
+    
 );
