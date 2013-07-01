@@ -3,7 +3,31 @@
 use Carbon\Carbon;
 use Kmd\Logviewer\Logviewer;
 
-Route::group(array('before' => 'logviewer.messages'), function ()
+$filters = Config::get('logviewer::filters.global');
+if (isset($filters['before']))
+{
+    if ( ! is_array($filters['before']))
+    {
+        $filters['before'] = explode('|', $filters['before']);
+    }
+}
+else
+{
+    $filters['before'] = array();
+}
+$filters['before'][] = 'logviewer.messages';
+if (isset($filters['after']))
+{
+    if ( ! is_array($filters['after']))
+    {
+        $filters['after'] = explode('|', $filters['after']);
+    }
+}
+else
+{
+    $filters['after'] = array();
+}
+Route::group(array('before' => $filters['before'], 'after' => $filters['after']), function ()
 {
     Route::get('logviewer', function ()
     {
@@ -21,22 +45,69 @@ Route::group(array('before' => 'logviewer.messages'), function ()
         return Redirect::to('logviewer/' . $sapi . '/' . $today . '/all');
     });
 
-    Route::get('logviewer/{sapi}/{date}/delete', function ($sapi, $date)
+    $filters = Config::get('logviewer::filters.delete');
+    if (isset($filters['before']))
+    {
+        if ( ! is_array($filters['before']))
+        {
+            $filters['before'] = explode('|', $filters['before']);
+        }
+    }
+    else
+    {
+        $filters['before'] = array();
+    }
+    if (isset($filters['after']))
+    {
+        if ( ! is_array($filters['after']))
+        {
+            $filters['after'] = explode('|', $filters['after']);
+        }
+    }
+    else
+    {
+        $filters['after'] = array();
+    }
+    Route::get('logviewer/{sapi}/{date}/delete', array('before' => $filters['before'], 'after' => $filters['after'], function ($sapi, $date)
     {
         $logviewer = new Logviewer($sapi, $date);
         
         if ($logviewer->delete())
         {
-			$today = Carbon::today()->format('Y-m-d');
+            $today = Carbon::today()->format('Y-m-d');
             return Redirect::to('logviewer/'.$sapi.'/'.$today.'/all')->with('success', Lang::get('logviewer::logviewer.delete.success'));
         }
         else
         {
             return Redirect::to('logviewer/'.$sapi.'/'.$date.'/all')->with('error', Lang::get('logviewer::logviewer.delete.error'));
         }
-    });
+    }));
 
-    Route::group(array('before' => 'logviewer.logs'), function ()
+    $filters = Config::get('logviewer::filters.view');
+    if (isset($filters['before']))
+    {
+        if ( ! is_array($filters['before']))
+        {
+            $filters['before'] = explode('|', $filters['before']);
+        }
+    }
+    else
+    {
+        $filters['before'] = array();
+    }
+    $filters['before'][] = 'logviewer.logs';
+    if (isset($filters['after']))
+    {
+        if ( ! is_array($filters['after']))
+        {
+            $filters['after'] = explode('|', $filters['after']);
+        }
+    }
+    else
+    {
+        $filters['after'] = array();
+    }
+    Route::group(array('before' => $filters['before'], 'after' => $filters['after']), function ()
     {
         Route::get('logviewer/{sapi}/{date}/{level?}', function ($sapi, $date, $level = null)
         {
