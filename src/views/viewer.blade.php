@@ -36,8 +36,9 @@
                             <div class="container-fluid">
                                 {{ HTML::link($url, Lang::get('logviewer::logviewer.title'), array('class' => 'brand')) }}
                                 <ul class="nav">
-                                    @foreach (Lang::get('logviewer::logviewer.levels') as $level)
-                                        {{ HTML::nav_item($url.'/' . $sapi_plain . '/' . $date . '/' . $level, ucfirst($level)) }}
+                                    {{ HTML::nav_item($url.'/' . $sapi_plain . '/' . $date . '/all', ucfirst(Lang::get('logviewer::logviewer.levels.all'))) }}
+                                    @foreach ($levels as $level)
+                                        {{ HTML::nav_item($url.'/' . $sapi_plain . '/' . $date . '/' . $level, ucfirst(Lang::get('logviewer::logviewer.levels.' . $level))) }}
                                     @endforeach
                                 </ul>
                                 @if ( ! $empty)
