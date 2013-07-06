@@ -8,6 +8,8 @@ Created and maintained by Micheal Mand. Copyright &copy; 2013. Licensed under th
 
 If anyone has any ideas on how to make this framework agnostic, please contact me or open a pull request.
 
+[![Build Status](https://travis-ci.org/mikemand/logviewer.png?branch=master)](https://travis-ci.org/mikemand/logviewer)
+
 ##Demo
 
 [View the demo here](http://logviewer.kmdwebdesigns.com/logviewer)
