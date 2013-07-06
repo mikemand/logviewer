@@ -19,7 +19,7 @@
     "require": {
         "php": ">=5.3.7",
         "illuminate/support": "4.0.x",
-        "psr/log": "dev-master",
+        "psr/log": "~1.0",
         "illuminate/filesystem": "4.0.x",
         "symfony/finder": "2.3.*"
     },
