@@ -1,6 +1,42 @@
 <?php
 
+use Kmd\Logviewer\Logviewer;
+
 class LogviewerTest extends PHPUnit_Framework_TestCase {
+    
+    public $logviewer;
+    
+    public function setUp()
+    {
+        $this->logviewer = new Logviewer('cgi-fcgi', '2013-06-01');
+        
+        parent::setUp();
+    }
+    
+    public function tearDown()
+    {
+        $this->logviewer = null;
+    }
+    
+    public function testLogLevels()
+    {
+        $levels = array(
+            'EMERGENCY' => 'emergency',
+            'ALERT' => 'alert',
+            'CRITICAL' => 'critical',
+            'ERROR' => 'error',
+            'WARNING' => 'warning',
+            'NOTICE' => 'notice',
+            'INFO' => 'info',
+            'DEBUG' => 'debug',
+        );
+        
+        $psr = $this->logviewer->getLevels();
+        
+        $this->assertEquals(count($levels), count($psr));
+        
+        $this->assertEquals($levels, $psr);
+    }
     
     public function testLogAggregationRegex()
     {
