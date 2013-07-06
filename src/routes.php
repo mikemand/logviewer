@@ -119,6 +119,8 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
             $logviewer = new Logviewer($sapi, $date, $level);
             
             $log = $logviewer->log();
+
+            $levels = $logviewer->getLevel();
             
             $page = Paginator::make($log, count($log), Config::get('logviewer::per_page', 10));
             
@@ -129,7 +131,8 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
                        ->with('date', $date)
                        ->with('sapi', Lang::get('logviewer::logviewer.sapi.' . $sapi))
 					   ->with('sapi_plain', $sapi)
-					   ->with('url', Config::get('logviewer::base_url'));
+					   ->with('url', Config::get('logviewer::base_url'))
+                       ->with('levels', $levels);
         });
     });
 });

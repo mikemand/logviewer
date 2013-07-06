@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Lang;
+use Psr\Log\LogLevel;
+use ReflectionClass;
 
 class Logviewer {
     
@@ -76,6 +78,12 @@ class Logviewer {
         {
             return File::delete($log_file[0]);
         }
+    }
+
+    public function getLevel()
+    {
+        $class = new ReflectionClass(new LogLevel);
+        return $constants = $class->getConstants();
     }
     
 }
