@@ -80,7 +80,7 @@ class Logviewer {
         }
     }
 
-    public function getLevel()
+    public function getLevels()
     {
         $class = new ReflectionClass(new LogLevel);
         return $constants = $class->getConstants();

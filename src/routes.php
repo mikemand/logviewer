@@ -120,7 +120,7 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
             
             $log = $logviewer->log();
 
-            $levels = $logviewer->getLevel();
+            $levels = $logviewer->getLevels();
             
             $page = Paginator::make($log, count($log), Config::get('logviewer::per_page', 10));
             
