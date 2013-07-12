@@ -1,7 +1,5 @@
 <?php
 
-use Psr\Log\LogLevel;
-
 return array(
     
     'delete' => array(
@@ -20,14 +18,14 @@ return array(
     'empty_file'  => ':sapi Log f&uuml;r den :date scheint leer zu sein. Hast du diesen manuell gel&ouml;scht?',
     'levels' => array(
         'all' => 'Alle',
-        'emergency' => LogLevel::EMERGENCY,
-        'alert' => LogLevel::ALERT,
-        'critical' => LogLevel::CRITICAL,
-        'error' => LogLevel::ERROR,
-        'warning' => LogLevel::WARNING,
-        'notice' => LogLevel::NOTICE,
-        'info' => LogLevel::INFO,
-        'debug' => LogLevel::DEBUG,
+        'emergency' => 'Notfall',
+        'alert' => 'Hinweis',
+        'critical' => 'Kritisch',
+        'error' => 'Fehler',
+        'warning' => 'Warnung',
+        'notice' => 'Notiz',
+        'info' => 'Info',
+        'debug' => 'Debug',
     ),
     'no_log'  => 'Kein :sapi verf&uuml;gbar f&uuml;r den :date.',
     // @TODO Find out what sapi nginx, IIS, etc. show up as.
