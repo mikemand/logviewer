@@ -8,7 +8,7 @@ class LogviewerTest extends PHPUnit_Framework_TestCase {
     
     public function setUp()
     {
-        $this->logviewer = new Logviewer('cgi-fcgi', '2013-06-01');
+        $this->logviewer = new Logviewer('app', 'cgi-fcgi', '2013-06-01');
         
         parent::setUp();
     }
