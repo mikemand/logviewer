@@ -65,8 +65,8 @@ $ php artisan config:publish kmd/logviewer
 By default, LogViewer will register itself a couple of routes:
 
  * `logviewer` -> Redirect to today's log, showing all levels.
- * `logviewer/$sapi/$date/delete` -> Delete log from `$sapi` (see: [php\_sapi\_name](http://php.net/manual/en/function.php-sapi-name.php)) on `$date` (`Y-m-d` format).
- * `logviewer/$sapi/$date/$level?` -> Show log from `$sapi` on `$date` with `$level` (if not supplied, defaults to all).
+ * `logviewer/$app/$sapi/$date/delete` -> Delete log from `$sapi` (see: [php\_sapi\_name](http://php.net/manual/en/function.php-sapi-name.php)) on `$date` (`Y-m-d` format).
+ * `logviewer/$app/$sapi/$date/$level?` -> Show log from `$sapi` on `$date` with `$level` (if not supplied, defaults to all).
 
 LogViewer also registers a filter (`logviewer.logs`) to aggregate all the logs in your `storage_path()/logs/` directory and share them with the `$logs` variable.
 
@@ -77,4 +77,5 @@ LogViewer also registers a filter (`logviewer.logs`) to aggregate all the logs i
    * `global`: Filters that affect the entirety of the logviewer. For example: `'global' => array('before' => 'auth'),` will apply the default Laravel `auth` filter to the logviewer, requiring a logged in user for all routes.
    * `view`: Filters that affect the viewing of log files.
    * `delete`: Filter that affect the deletion of log files.
+ * `log_dirs`: Associative array of log directories to monitor. Array keys are the 'names' of your applications, values are the paths to their `app/storage/logs` dir (no trailing slash). Default: `array('app' => storage_path().'/logs')`.
  * `per_page`: The number of log messages to show per page via Pagination. Default: 10.

@@ -6,20 +6,27 @@ Route::filter('logviewer.logs', function()
     foreach (Lang::get('logviewer::logviewer.sapi') as $sapi => $human)
     {
         $logs[$sapi]['sapi'] = $human;
-        $files = glob(storage_path().'/logs/log-'.$sapi.'*');
-        if (is_array($files))
+        $dirs = Config::get('logviewer::log_dirs');
+        
+        $files = array();
+        
+        foreach ($dirs as $app => $dir)
         {
-            $files = array_reverse($files);
-            foreach ($files as &$file)
+            $files[$app] = glob($dir . '/log-' . $sapi . '*', GLOB_BRACE);
+            if (is_array($files))
             {
-                $file = preg_replace('/.*(\d{4}-\d{2}-\d{2}).*/', '$1', basename($file));
+                $files[$app] = array_reverse($files[$app]);
+                foreach ($files[$app] as &$file)
+                {
+                    $file = preg_replace('/.*(\d{4}-\d{2}-\d{2}).*/', '$1', basename($file));
+                }
+            }
+            else
+            {
+                $files[$app] = array();
             }
         }
-        else
-        {
-            $files = array();
-        }
-
+        
         $logs[$sapi]['logs'] = $files;
     }
     

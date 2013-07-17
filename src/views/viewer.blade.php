@@ -36,9 +36,9 @@
                             <div class="container-fluid">
                                 {{ HTML::link($url, Lang::get('logviewer::logviewer.title'), array('class' => 'brand')) }}
                                 <ul class="nav">
-                                    {{ HTML::nav_item($url.'/' . $sapi_plain . '/' . $date . '/all', ucfirst(Lang::get('logviewer::logviewer.levels.all'))) }}
+                                    {{ HTML::nav_item($url . '/' . $path . '/' . $sapi_plain . '/' . $date . '/all', ucfirst(Lang::get('logviewer::logviewer.levels.all'))) }}
                                     @foreach ($levels as $level)
-                                        {{ HTML::nav_item($url.'/' . $sapi_plain . '/' . $date . '/' . $level, ucfirst(Lang::get('logviewer::logviewer.levels.' . $level))) }}
+                                        {{ HTML::nav_item($url . '/' . $path . '/' . $sapi_plain . '/' . $date . '/' . $level, ucfirst(Lang::get('logviewer::logviewer.levels.' . $level))) }}
                                     @endforeach
                                 </ul>
                                 @if ( ! $empty)
@@ -59,12 +59,17 @@
                                 @if ($logs)
                                     @foreach ($logs as $type => $files)
                                         @if ( ! empty($files['logs']))
-                                            <li class="nav-header">{{ $files['sapi'] }}</li>
-                                            <ul class="nav nav-list">
-                                                @foreach ($files['logs'] as $file)
-                                                    {{ HTML::decode(HTML::nav_item($url.'/' . $type . '/' . $file, $file)) }}
-                                                @endforeach
-                                            </ul>
+                                            <?php $count = count($files['logs']) ?>
+                                            @foreach ($files['logs'] as $app => $file)
+                                                @if ( ! empty($file))
+                                                    <li class="nav-header">{{ ($count > 1 ? $app . ' - ' . $files['sapi'] : $files['sapi']) }}</li>
+                                                    <ul class="nav nav-list">
+                                                        @foreach ($file as $f)
+                                                            {{ HTML::decode(HTML::nav_item($url . '/' . $app . '/' . $type . '/' . $f, $f)) }}
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            @endforeach
                                         @endif
                                     @endforeach
                                 @endif
