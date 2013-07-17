@@ -149,7 +149,7 @@
                 <p>{{ Lang::get('logviewer::logviewer.delete.modal.body') }}</p>
             </div>
             <div class="modal-footer">
-                {{ HTML::link($url.'/' . $sapi_plain . '/' . $date . '/delete', Lang::get('logviewer::logviewer.delete.modal.btn.yes'), array('class' => 'btn btn-success')) }}
+                {{ HTML::link($url . '/' . $app . '/' . $sapi_plain . '/' . $date . '/delete', Lang::get('logviewer::logviewer.delete.modal.btn.yes'), array('class' => 'btn btn-success')) }}
                 <button class="btn btn-danger" data-dismiss="modal">{{ Lang::get('logviewer::logviewer.delete.modal.btn.no') }}</button>
             </div>
         </div>
