@@ -10,5 +10,6 @@ return array(
     ),
     'log_dirs' => array('app' => storage_path().'/logs'),
     'per_page' => 10,
+    'view'     => 'logviewer',
     
 );

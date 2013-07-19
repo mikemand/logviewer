@@ -132,7 +132,7 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
             
             $page = Paginator::make($log, count($log), Config::get('logviewer::per_page', 10));
             
-            return View::make('logviewer::viewer')
+            return View::make(Config::get('logviewer::view'))
                        ->with('paginator', $page)
                        ->with('log', (count($log) > $page->getPerPage() ? array_slice($log, $page->getFrom(), $page->getPerPage()) : $log))
                        ->with('empty', $logviewer->isEmpty())
