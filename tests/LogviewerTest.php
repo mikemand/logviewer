@@ -1,6 +1,7 @@
 <?php
 
 use Kmd\Logviewer\Logviewer;
+use Mockery as m;
 
 class LogviewerTest extends PHPUnit_Framework_TestCase {
     
@@ -8,14 +9,23 @@ class LogviewerTest extends PHPUnit_Framework_TestCase {
     
     public function setUp()
     {
-        $this->logviewer = new Logviewer('app', 'cgi-fcgi', '2013-06-01');
-        
         parent::setUp();
+        
+        $app = m::mock('AppMock');
+        $app->shouldReceive('instance')->once()->andReturn($app);
+
+        Illuminate\Support\Facades\Facade::setFacadeApplication($app);
+        Illuminate\Support\Facades\Config::swap($config = m::mock('ConfigMock'));
+
+        $config->shouldReceive('get')->once()->with('logviewer::log_dirs')->andReturn(array('app' => 'app/storage/logs'));
+        
+        $this->logviewer = new Logviewer('app', 'cgi-fcgi', '2013-06-01');
     }
     
     public function tearDown()
     {
         $this->logviewer = null;
+        m::close();
     }
     
     public function testLogLevels()
