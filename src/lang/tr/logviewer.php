@@ -41,6 +41,7 @@ return array(
     'sapi'   => array(
         'apache' => 'Apache',
         'cgi-fcgi' => 'Fast CGI',
+        'fpm-fcgi' => 'Nginx',
         'cli' => 'CLI',
     ),
     'title' => 'Laravel 4 LogViewer',
