@@ -3,6 +3,9 @@
 Route::filter('logviewer.logs', function()
 {
     $logs = array();
+    if( ! Lang::has('logviewer::logviewer.sapi')){
+        App::setLocale('en');
+    }
     foreach (Lang::get('logviewer::logviewer.sapi') as $sapi => $human)
     {
         $logs[$sapi]['sapi'] = $human;
