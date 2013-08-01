@@ -92,7 +92,7 @@ class Logviewer {
         unset($headings);
         unset($log_data);
         
-        if(Config::get('logviewer::log_order') == "desc"){
+        if(strtolower(Config::get('logviewer::log_order')) == "desc"){
             $log = array_reverse($log);
         }
         
