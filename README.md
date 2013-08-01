@@ -81,6 +81,7 @@ LogViewer also registers a couple filters:
    * `view`: Filters that affect the viewing of log files.
    * `delete`: Filter that affect the deletion of log files.
  * `log_dirs`: Associative array of log directories to monitor. Array keys are the 'names' of your applications, values are the paths to their `app/storage/logs` dir (no trailing slash). Default: `array('app' => storage_path().'/logs')`.
+ * `log_order`: Order log contents ascending or descending. Default: 'asc'.
  * `per_page`: The number of log messages to show per page via Pagination. Default: 10.
  * `view`: The name (and location) of the view used to display logs. For more information, check out the 'Advanced Usage' section for detailed information about the variables passed to this view. Default: 'logviewer::viewer'.
 
