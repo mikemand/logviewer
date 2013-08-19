@@ -54,7 +54,7 @@ class Logviewer {
         $this->empty = true;
         $log = array();
         
-        $pattern = "/\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.*/";
+        $pattern = "/\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\].*/";
         
         $log_levels = $this->getLevels();
         
@@ -69,11 +69,15 @@ class Logviewer {
             preg_match_all($pattern, $file, $headings);
             $log_data = preg_split($pattern, $file);
             
-            unset($log_data[0]); // Always seems to be empty...
+            if ($log_data[0] < 1)
+            {
+                $trash = array_shift($log_data);
+                unset($trash);
+            }
             
             foreach ($headings as $h)
             {
-                for ($i=0; $i < count($h); $i++)
+                for ($i=0, $j = count($h); $i < $j; $i++)
                 {
                     foreach ($log_levels as $ll)
                     {
@@ -81,7 +85,7 @@ class Logviewer {
                         {
                             if (strpos(strtolower($h[$i]), strtolower('log.' . $ll)))
                             {
-                                $log[$i+1] = array('level' => $ll, 'header' => $h[$i], 'stack' => $log_data[$i+1]);
+                                $log[] = array('level' => $ll, 'header' => $h[$i], 'stack' => $log_data[$i]);
                             }
                         }
                     }

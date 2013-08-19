@@ -134,7 +134,7 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
             
             return View::make(Config::get('logviewer::view'))
                        ->with('paginator', $page)
-                       ->with('log', (count($log) > $page->getPerPage() ? array_slice($log, $page->getFrom(), $page->getPerPage()) : $log))
+                       ->with('log', (count($log) > $page->getPerPage() ? array_slice($log, $page->getFrom()-1, $page->getPerPage()) : $log))
                        ->with('empty', $logviewer->isEmpty())
                        ->with('date', $date)
                        ->with('sapi', Lang::get('logviewer::logviewer.sapi.' . $sapi))
