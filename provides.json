@@ -1,0 +1,11 @@
+{
+    "providers": [
+        "Kmd\Logviewer\LogviewerServiceProvider"
+    ],
+    "aliases": [
+        {
+            "alias": "LogViewer",
+            "facade": "Kmd\Logviewer\LogviewerFacade"
+        }
+    ]
+}

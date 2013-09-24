@@ -32,7 +32,10 @@ class LogviewerServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app['logviewer'] = $this->app->share(function($app)
+        {
+            return new Logviewer;
+        });
 	}
 
 	/**
