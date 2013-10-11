@@ -1,5 +1,5 @@
 <?php
-
+Use 'Illuminate\Support\Facades\Html'
 // Inspired by: http://forums.laravel.io/viewtopic.php?id=827
 HTML::macro('nav_item', function($url, $text, $a_attr = array(), $active_class = 'active', $li_attrs = array())
 {
