@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php Use 'Illuminate\Support\Facades\Html' ?>
 <html lang="{{ Config::get('app.locale') }}">
     
     <head>
