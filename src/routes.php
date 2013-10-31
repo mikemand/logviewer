@@ -131,12 +131,16 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
             $levels = $logviewer->getLevels();
             
             $viewName = config::get('logviewer::pagination_view_name');
-
+            
+            $currentViewName = Paginator::getViewName();
+            
             if($viewName != '')
                 Paginator::setViewName($viewName);
 
             $page = Paginator::make($log, count($log), Config::get('logviewer::per_page', 10));
-
+            
+            Paginator::setViewName($currentViewName);
+            
             return View::make(Config::get('logviewer::view'))
                        ->with('paginator', $page)
                        ->with('log', (count($log) > $page->getPerPage() ? array_slice($log, $page->getFrom()-1, $page->getPerPage()) : $log))
