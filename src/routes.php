@@ -130,8 +130,6 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
 
             $levels = $logviewer->getLevels();
             
-            Config::set('view.pagination', 'pagination::slider');//Fix for Twitter bootstrap 3 users
-            
             $page = Paginator::make($log, count($log), Config::get('logviewer::per_page', 10));
             
             return View::make(Config::get('logviewer::view'))
