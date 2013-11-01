@@ -21,7 +21,7 @@
             <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         
-        {{ HTML::script('//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js') }}
+        {{ HTML::script('//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.min.js') }}
     </head>
     
     <body>
@@ -154,8 +154,8 @@
             </div>
         </div>
         
-        {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') }}
-        <script>window.jQuery || document.write('<script src="{{ URL::to("packages/kmd/logviewer/js/jquery-1.9.1.min.js") }}"><\/script>')</script>
+        {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js') }}
+        <script>window.jQuery || document.write('<script src="{{ URL::to("packages/kmd/logviewer/js/jquery-1.10.2.min.js") }}"><\/script>')</script>
         {{ HTML::script('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js') }}
         {{ HTML::script('packages/kmd/logviewer/js/script.js') }}
         
