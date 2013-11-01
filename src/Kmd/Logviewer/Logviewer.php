@@ -15,7 +15,7 @@ class Logviewer {
     public $empty;
     
     /**
-     * Logviewer constructor
+     * Create a new Logviewer.
      * 
      * @access public
      * @param string
@@ -33,7 +33,7 @@ class Logviewer {
     }
     
     /**
-     * check if log is empty
+     * Check if the log is empty.
      * 
      * @access public
      * @return boolean
@@ -44,7 +44,7 @@ class Logviewer {
     }
     
     /**
-     * open and parse log
+     * Open and parse the log.
      * 
      * @access public
      * @return array
@@ -104,7 +104,7 @@ class Logviewer {
     }
     
     /**
-     * delete log
+     * Delete the log.
      * 
      * @access public
      * @return boolean
@@ -120,7 +120,7 @@ class Logviewer {
     }
     
     /**
-     * get log levels from psr/log
+     * Get the log levels from psr/log.
      * 
      * @access public
      * @return array
