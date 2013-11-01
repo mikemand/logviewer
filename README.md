@@ -84,6 +84,7 @@ LogViewer also registers a couple filters:
  * `log_order`: Order log contents ascending or descending. Default: 'asc'.
  * `per_page`: The number of log messages to show per page via Pagination. Default: 10.
  * `view`: The name (and location) of the view used to display logs. For more information, check out the 'Advanced Usage' section for detailed information about the variables passed to this view. Default: 'logviewer::viewer'.
+ * `p_view`: The pagination view to use. When using Bootstrap 3 as the default for an application, the pagination would be broken within LogViewer. If you create your own view, be sure to change this if you use Bootstrap 3 (or write your own pagination view) Default: 'pagination::slider'.
 
 ## Advanced Usage
 
