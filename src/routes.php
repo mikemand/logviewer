@@ -138,6 +138,10 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
             {
                 $level = 'all';
             }
+
+            $logviewer = new Logviewer($path, $sapi, $date, $level);
+
+            $log = $logviewer->log();
             
             $paginator = new Environment($this->app['request'], $this->app['view'], $this->app['translator']);
 
