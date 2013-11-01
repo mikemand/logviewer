@@ -142,12 +142,14 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
             $logviewer = new Logviewer($path, $sapi, $date, $level);
 
             $log = $logviewer->log();
+
+            $levels = $logviewer->getLevels();
             
             $paginator = new Environment($this->app['request'], $this->app['view'], $this->app['translator']);
 
             $view = Config::get('logviewer::p_view');
 
-            if (is_null($view) || !is_string($view))
+            if (is_null($view) || ! is_string($view))
             {
                 $view = Config::get('view.pagination');
             }
