@@ -17,7 +17,7 @@
         "MIT"
     ],
     "require": {
-        "php": ">=5.3.7"
+        "php": ">=5.3.7",
         "illuminate/support": "~4",
         "illuminate/filesystem": "~4",
         "symfony/finder": "~2.3",
