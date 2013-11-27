@@ -52,6 +52,17 @@ Publish package assets:
 $ php artisan asset:publish kmd/logviewer
 ```
 
+(Optional) You can configure your `composer.json` to do this after each commit:
+
+```
+"scripts":{
+    "post-update-cmd":[
+        "php artisan asset:publish kmd/logviewer",
+        "php artisan optimize",
+    ]
+},
+```
+
 (Optional) Publish package config:
 
 ```
