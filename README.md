@@ -52,7 +52,7 @@ Publish package assets:
 $ php artisan asset:publish kmd/logviewer
 ```
 
-(Optional) You can configure your `composer.json` to do this after each commit:
+(Optional) You can configure your `composer.json` to do this after each `$ composer update`:
 
 ```
 "scripts":{
