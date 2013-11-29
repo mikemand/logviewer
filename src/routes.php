@@ -145,9 +145,6 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
 
             $levels = $logviewer->getLevels();
 
-            // PHP 5.3 does not support $this in closure scope
-            // SEE: https://wiki.php.net/rfc/closures/removal-of-this
-            //$paginator = new Environment($this->app['request'], $this->app['view'], $this->app['translator']);
             $paginator = new Environment(App::make('request'), App::make('view'), App::make('translator'));
 
             $view = Config::get('logviewer::p_view');
