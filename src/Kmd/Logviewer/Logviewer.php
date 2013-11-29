@@ -83,7 +83,7 @@ class Logviewer {
                     {
                         if ($this->level == $ll OR $this->level == 'all')
                         {
-                            if (strpos(strtolower($h[$i]), strtolower('log.' . $ll)))
+                            if (strpos(strtolower($h[$i]), strtolower('.' . $ll)))
                             {
                                 $log[] = array('level' => $ll, 'header' => $h[$i], 'stack' => $log_data[$i]);
                             }
