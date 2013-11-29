@@ -6,9 +6,31 @@ Inspiration from [Fire Log](https://github.com/dperrymorrow/Fire-Log) for CodeIg
 
 Created and maintained by Micheal Mand. Copyright &copy; 2013. Licensed under the [MIT license](LICENSE.md).
 
-If anyone has any ideas on how to make this framework agnostic, please contact me or open a pull request.
-
 [![Build Status](https://travis-ci.org/mikemand/logviewer.png?branch=master)](https://travis-ci.org/mikemand/logviewer) [![Total Downloads](https://poser.pugx.org/kmd/logviewer/downloads.png)](https://packagist.org/packages/kmd/logviewer)
+
+---------
+
+#A note about Laravel 4.1
+
+As of right now (2013-11-29), fresh Laravel 4.1 applications log things differently than they used to. While this doesn't *technically* break LogViewer, LogViewer also doesn't know how to handle these changes. Whether these changes are permanent or not is unclear, but here's a quick fix:
+
+In your `app/start/global.php`, [line 34](https://github.com/laravel/laravel/blob/develop/app/start/global.php#L34) change:
+
+```php
+Log::useFiles(storage_path().'/logs/laravel.log');
+```
+
+to:
+
+```php
+$logFile = 'log-'.php_sapi_name().'.txt';
+
+Log::useDailyFiles(storage_path().'/logs/'.$logFile);
+```
+
+This only applies to new installations of Laravel 4.1. If you've upgraded an existing 4.0 application (and did not make changes to the way logs are created and stored), everything should still work.
+
+---------
 
 ##Demo
 
