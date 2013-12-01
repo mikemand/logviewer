@@ -20,7 +20,7 @@
         "php": ">=5.3.7",
         "illuminate/support": "~4",
         "illuminate/filesystem": "~4",
-        "symfony/finder": "~2.3",
+        "symfony/finder": ">=2.3,<2.4",
         "psr/log": "~1.0"
     },
     "require-dev": {
