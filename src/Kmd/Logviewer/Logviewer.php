@@ -7,7 +7,7 @@ use Psr\Log\LogLevel;
 use ReflectionClass;
 
 class Logviewer
-{    
+{
     public $path;
     public $sapi;
     public $date;
@@ -58,7 +58,7 @@ class Logviewer
 
         $log_levels = $this->getLevels();
 
-        $log_file = glob($this->path . '/log-' . $this->sapi . '*-' . $this->date . '.txt');
+        $log_file = glob($this->path.'/log-'.$this->sapi.'*-'.$this->date.'.txt');
 
         if (!empty($log_file)) {
             $this->empty = false;
@@ -76,8 +76,8 @@ class Logviewer
             foreach ($headings as $h) {
                 for ($i=0, $j = count($h); $i < $j; $i++) {
                     foreach ($log_levels as $ll) {
-                        if ($this->level == $ll OR $this->level == 'all') {
-                            if (strpos(strtolower($h[$i]), strtolower('.' . $ll))) {
+                        if ($this->level == $ll || $this->level == 'all') {
+                            if (strpos(strtolower($h[$i]), strtolower('.'.$ll))) {
                                 $log[] = array('level' => $ll, 'header' => $h[$i], 'stack' => $log_data[$i]);
                             }
                         }
@@ -89,7 +89,7 @@ class Logviewer
         unset($headings);
         unset($log_data);
 
-        if(strtolower(Config::get('logviewer::log_order')) == "desc"){
+        if (strtolower(Config::get('logviewer::log_order')) == 'desc'){
             $log = array_reverse($log);
         }
 
@@ -104,7 +104,7 @@ class Logviewer
      */
     public function delete()
     {
-        $log_file = glob($this->path . '/log-' . $this->sapi . '*-' . $this->date . '.txt');
+        $log_file = glob($this->path.'/log-'.$this->sapi.'*-'.$this->date.'.txt');
 
         if (!empty($log_file)) {
             return File::delete($log_file[0]);

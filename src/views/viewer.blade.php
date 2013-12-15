@@ -36,9 +36,9 @@
                             <div class="container-fluid">
                                 {{ HTML::link($url, Lang::get('logviewer::logviewer.title'), array('class' => 'brand')) }}
                                 <ul class="nav">
-                                    {{ HTML::nav_item($url . '/' . $path . '/' . $sapi_plain . '/' . $date . '/all', ucfirst(Lang::get('logviewer::logviewer.levels.all'))) }}
+                                    {{ HTML::nav_item($url.'/'.$path.'/'.$sapi_plain.'/'.$date.'/all', ucfirst(Lang::get('logviewer::logviewer.levels.all'))) }}
                                     @foreach ($levels as $level)
-                                        {{ HTML::nav_item($url . '/' . $path . '/' . $sapi_plain . '/' . $date . '/' . $level, ucfirst(Lang::get('logviewer::logviewer.levels.' . $level))) }}
+                                        {{ HTML::nav_item($url.'/'.$path.'/'.$sapi_plain.'/'.$date.'/'.$level, ucfirst(Lang::get('logviewer::logviewer.levels.'.$level))) }}
                                     @endforeach
                                 </ul>
                                 @if ( ! $empty)
@@ -62,10 +62,10 @@
                                             <?php $count = count($files['logs']) ?>
                                             @foreach ($files['logs'] as $app => $file)
                                                 @if ( ! empty($file))
-                                                    <li class="nav-header">{{ ($count > 1 ? $app . ' - ' . $files['sapi'] : $files['sapi']) }}</li>
+                                                    <li class="nav-header">{{ ($count > 1 ? $app.' - '.$files['sapi'] : $files['sapi']) }}</li>
                                                     <ul class="nav nav-list">
                                                         @foreach ($file as $f)
-                                                            {{ HTML::decode(HTML::nav_item($url . '/' . $app . '/' . $type . '/' . $f, $f)) }}
+                                                            {{ HTML::decode(HTML::nav_item($url.'/'.$app.'/'.$type.'/'.$f, $f)) }}
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -149,7 +149,7 @@
                 <p>{{ Lang::get('logviewer::logviewer.delete.modal.body') }}</p>
             </div>
             <div class="modal-footer">
-                {{ HTML::link($url . '/' . $path . '/' . $sapi_plain . '/' . $date . '/delete', Lang::get('logviewer::logviewer.delete.modal.btn.yes'), array('class' => 'btn btn-success')) }}
+                {{ HTML::link($url.'/'.$path.'/'.$sapi_plain.'/'.$date.'/delete', Lang::get('logviewer::logviewer.delete.modal.btn.yes'), array('class' => 'btn btn-success')) }}
                 <button class="btn btn-danger" data-dismiss="modal">{{ Lang::get('logviewer::logviewer.delete.modal.btn.no') }}</button>
             </div>
         </div>

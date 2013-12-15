@@ -3,29 +3,23 @@
 Route::filter('logviewer.logs', function ()
 {
     $logs = array();
-    if( ! Lang::has('logviewer::logviewer.sapi')){
+    if (!Lang::has('logviewer::logviewer.sapi')) {
         App::setLocale('en');
     }
-    foreach (Lang::get('logviewer::logviewer.sapi') as $sapi => $human)
-    {
+    foreach (Lang::get('logviewer::logviewer.sapi') as $sapi => $human) {
         $logs[$sapi]['sapi'] = $human;
         $dirs = Config::get('logviewer::log_dirs');
         
         $files = array();
         
-        foreach ($dirs as $app => $dir)
-        {
-            $files[$app] = glob($dir . '/log-' . $sapi . '*', GLOB_BRACE);
-            if (is_array($files[$app]))
-            {
+        foreach ($dirs as $app => $dir) {
+            $files[$app] = glob($dir.'/log-'.$sapi.'*', GLOB_BRACE);
+            if (is_array($files[$app])) {
                 $files[$app] = array_reverse($files[$app]);
-                foreach ($files[$app] as &$file)
-                {
+                foreach ($files[$app] as &$file) {
                     $file = preg_replace('/.*(\d{4}-\d{2}-\d{2}).*/', '$1', basename($file));
                 }
-            }
-            else
-            {
+            } else {
                 $files[$app] = array();
             }
         }
@@ -36,14 +30,10 @@ Route::filter('logviewer.logs', function ()
     View::share('logs', $logs);
 });
 
-Route::filter('logviewer.messages', function ()
-{
-    if (Session::has('success') OR Session::has('error') OR Session::has('info'))
-    {
+Route::filter('logviewer.messages', function () {
+    if (Session::has('success') OR Session::has('error') OR Session::has('info')) {
         View::share('has_messages', true);
-    }
-    else
-    {
+    } else {
         View::share('has_messages', false);
     }
 });

@@ -43,7 +43,7 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
             Session::reflash();
         }
 
-        return Redirect::to(Config::get('logviewer::base_url') . '/' . $path . '/' . $sapi . '/' . $today . '/all');
+        return Redirect::to(Config::get('logviewer::base_url').'/'.$path.'/'.$sapi.'/'.$today.'/all');
     });
 
     $filters = Config::get('logviewer::filters.delete');
@@ -70,10 +70,10 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
 
             if ($logviewer->delete()) {
                 $today = Carbon::today()->format('Y-m-d');
-                return Redirect::to(Config::get('logviewer::base_url') . '/' . $path . '/' . $sapi . '/' . $today .'/all')
+                return Redirect::to(Config::get('logviewer::base_url').'/'.$path.'/'.$sapi.'/'.$today.'/all')
                     ->with('success', Lang::get('logviewer::logviewer.delete.success'));
             } else {
-                return Redirect::to(Config::get('logviewer::base_url') . '/' . $path . '/' . $sapi . '/' . $date . '/all')
+                return Redirect::to(Config::get('logviewer::base_url').'/'.$path.'/'.$sapi.'/'.$date.'/all')
                     ->with('error', Lang::get('logviewer::logviewer.delete.error'));
             }
         });
@@ -134,7 +134,7 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
                 ->with('log', (count($log) > $page->getPerPage() ? array_slice($log, $page->getFrom()-1, $page->getPerPage()) : $log))
                 ->with('empty', $logviewer->isEmpty())
                 ->with('date', $date)
-                ->with('sapi', Lang::get('logviewer::logviewer.sapi.' . $sapi))
+                ->with('sapi', Lang::get('logviewer::logviewer.sapi.'.$sapi))
                 ->with('sapi_plain', $sapi)
                 ->with('url', Config::get('logviewer::base_url'))
                 ->with('levels', $levels)
