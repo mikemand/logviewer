@@ -1,7 +1,6 @@
 <?php
 
-Route::filter('logviewer.logs', function ()
-{
+Route::filter('logviewer.logs', function () {
     $logs = array();
     if (!Lang::has('logviewer::logviewer.sapi')) {
         App::setLocale('en');
@@ -31,7 +30,7 @@ Route::filter('logviewer.logs', function ()
 });
 
 Route::filter('logviewer.messages', function () {
-    if (Session::has('success') OR Session::has('error') OR Session::has('info')) {
+    if (Session::has('success') || Session::has('error') || Session::has('info')) {
         View::share('has_messages', true);
     } else {
         View::share('has_messages', false);
