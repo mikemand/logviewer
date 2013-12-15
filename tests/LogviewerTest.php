@@ -3,8 +3,8 @@
 use Kmd\Logviewer\Logviewer;
 use Mockery as m;
 
-class LogviewerTest extends PHPUnit_Framework_TestCase {
-    
+class LogviewerTest extends PHPUnit_Framework_TestCase
+{
     public $logviewer;
     
     public function setUp()
@@ -17,7 +17,8 @@ class LogviewerTest extends PHPUnit_Framework_TestCase {
         Illuminate\Support\Facades\Facade::setFacadeApplication($app);
         Illuminate\Support\Facades\Config::swap($config = m::mock('ConfigMock'));
 
-        $config->shouldReceive('get')->once()->with('logviewer::log_dirs')->andReturn(array('app' => 'app/storage/logs'));
+        $config->shouldReceive('get')->once()->with('logviewer::log_dirs')
+            ->andReturn(array('app' => 'app/storage/logs'));
         
         $this->logviewer = new Logviewer('app', 'cgi-fcgi', '2013-06-01');
     }
@@ -62,11 +63,9 @@ class LogviewerTest extends PHPUnit_Framework_TestCase {
             '/path/to/laravel/app/storage/logs/log-cgi-fcgi-2013-06-01.txt',
         );
         
-        foreach ($files as &$file)
-        {
+        foreach ($files as &$file) {
             $file = preg_replace($pattern, '$1', basename($file));
             $this->assertEquals($file, $date);
         }
     }
-    
 }
