@@ -2,8 +2,8 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class LogviewerServiceProvider extends ServiceProvider {
-
+class LogviewerServiceProvider extends ServiceProvider
+{
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -21,10 +21,10 @@ class LogviewerServiceProvider extends ServiceProvider {
     public function boot()
     {
         $this->package('kmd/logviewer');
-        
-        include __DIR__ . '/../../routes.php';
-        include __DIR__ . '/../../filters.php';
-        include __DIR__ . '/../../macros.php';
+
+        include __DIR__.'/../../routes.php';
+        include __DIR__.'/../../filters.php';
+        include __DIR__.'/../../macros.php';
     }
 
     /**
@@ -35,8 +35,7 @@ class LogviewerServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app['logviewer'] = $this->app->share(function($app)
-        {
+        $this->app['logviewer'] = $this->app->share(function ($app) {
             return new Logviewer;
         });
     }
@@ -51,5 +50,4 @@ class LogviewerServiceProvider extends ServiceProvider {
     {
         return array('logviewer');
     }
-
 }
