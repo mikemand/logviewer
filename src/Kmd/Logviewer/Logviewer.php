@@ -1,4 +1,6 @@
-<?php namespace Kmd\Logviewer;
+<?php
+
+namespace Kmd\Logviewer;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
