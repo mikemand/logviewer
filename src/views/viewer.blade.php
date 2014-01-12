@@ -27,11 +27,8 @@
     <body>
         
         <div class="wrapper">
-            
-            <div class="container-fluid">
-                
                 <header>
-                    <div class="navbar navbar-static-top navbar-inverse">
+                    <div class="navbar navbar-fixed-top navbar-inverse">
                         <div class="navbar-inner">
                             <div class="container-fluid">
                                 {{ HTML::link($url, Lang::get('logviewer::logviewer.title'), array('class' => 'brand')) }}
@@ -50,6 +47,9 @@
                         </div>
                     </div>
                 </header>
+                
+            <div class="container-fluid">
+                
                 
                 <div class="row-fluid">
                     
