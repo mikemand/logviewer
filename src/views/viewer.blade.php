@@ -66,6 +66,7 @@
                                                     <ul class="nav nav-list">
                                                         @foreach ($file as $f)
                                                             {{ HTML::decode(HTML::nav_item($url.'/'.$app.'/'.$type.'/'.$f, $f)) }}
+                                                            {{ HTML::link('#delete_all_modal', Lang::get('logviewer::logviewer.delete_all.btn'), array('class' => 'btn btn-danger', 'data-toggle' => 'modal', 'data-target' => '#delete_all_modal')) }}
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -150,6 +151,20 @@
             </div>
             <div class="modal-footer">
                 {{ HTML::link($url.'/'.$path.'/'.$sapi_plain.'/'.$date.'/delete', Lang::get('logviewer::logviewer.delete.modal.btn.yes'), array('class' => 'btn btn-success')) }}
+                <button class="btn btn-danger" data-dismiss="modal">{{ Lang::get('logviewer::logviewer.delete.modal.btn.no') }}</button>
+            </div>
+        </div>
+
+        <div id="delete_all_modal" class="modal hide fade">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>{{ Lang::get('logviewer::logviewer.delete.modal.header') }}</h3>
+            </div>
+            <div class="modal-body">
+                <p>{{ Lang::get('logviewer::logviewer.delete.modal.body') }}</p>
+            </div>
+            <div class="modal-footer">
+                {{ HTML::link($url.'/'.$path.'/'.$sapi_plain.'/'.$date.'/delete_all', Lang::get('logviewer::logviewer.delete.modal.btn.yes'), array('class' => 'btn btn-success')) }}
                 <button class="btn btn-danger" data-dismiss="modal">{{ Lang::get('logviewer::logviewer.delete.modal.btn.no') }}</button>
             </div>
         </div>

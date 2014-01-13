@@ -15,6 +15,19 @@ return array(
         'success' => 'Log deleted successfully!',
         'btn' => 'Delete Current Log',
     ),
+    'delete_all' => array(
+        'modal' => array(
+            'header' => 'Are you sure?',
+            'body' => 'Are you sure you want to delete ALL logs?',
+            'btn' => array(
+                'no' => 'No',
+                'yes' => 'Yes',
+            )
+        ),
+        'error' => 'There was an error while deleting logs.',
+        'success' => 'All logs deleted successfully!',
+        'btn' => 'Delete ALL logs',
+    ),
     'empty_file'  => ':sapi log for :date appears to be empty. Did you manually delete the contents?',
     'levels' => array(
         'all' => 'all',
