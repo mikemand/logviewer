@@ -1,6 +1,8 @@
 body
 {
     font-family: "Inconsolata","Monaco",Verdana,Arial,sans-serif;
+    padding-top: 60px;
+    padding-bottom: 40px;
 }
 
 pre

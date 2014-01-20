@@ -112,6 +112,17 @@ class Logviewer
             return File::delete($log_file[0]);
         }
     }
+    public function deleteAll()
+    { 
+        $log_files = glob($this->path."/*"); // get all log file names
+        $logs_dir_lenght = strlen($this->path);
+        foreach($log_files as $log_file) { // iterate files
+          if(is_file($log_file) && strpos($log_file, "/log-")) //Check if it is file and is it a log file
+            File::delete($log_file); // delete file
+        }
+
+        return true;
+    }
 
     /**
      * Get the log levels from psr/log.
