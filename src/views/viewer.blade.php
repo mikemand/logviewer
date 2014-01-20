@@ -41,6 +41,7 @@
                                 @if ( ! $empty)
                                     <div class="pull-right">
                                         {{ HTML::link('#delete_modal', Lang::get('logviewer::logviewer.delete.btn'), array('class' => 'btn btn-danger', 'data-toggle' => 'modal', 'data-target' => '#delete_modal')) }}
+                                        {{ HTML::link('#delete_all_modal', Lang::get('logviewer::logviewer.delete_all.btn'), array('class' => 'btn btn-danger', 'data-toggle' => 'modal', 'data-target' => '#delete_all_modal')) }}
                                     </div>
                                 @endif
                             </div>
@@ -66,7 +67,6 @@
                                                     <ul class="nav nav-list">
                                                         @foreach ($file as $f)
                                                             {{ HTML::decode(HTML::nav_item($url.'/'.$app.'/'.$type.'/'.$f, $f)) }}
-                                                            {{ HTML::link('#delete_all_modal', Lang::get('logviewer::logviewer.delete_all.btn'), array('class' => 'btn btn-danger', 'data-toggle' => 'modal', 'data-target' => '#delete_all_modal')) }}
                                                         @endforeach
                                                     </ul>
                                                 @endif
