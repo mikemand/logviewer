@@ -4,7 +4,6 @@ namespace Kmd\Logviewer;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Lang;
 use Psr\Log\LogLevel;
 use ReflectionClass;
 
@@ -18,7 +17,7 @@ class Logviewer
 
     /**
      * Create a new Logviewer.
-     * 
+     *
      * @access public
      * @param string
      * @param string
@@ -36,7 +35,7 @@ class Logviewer
 
     /**
      * Check if the log is empty.
-     * 
+     *
      * @access public
      * @return boolean
      */
@@ -47,7 +46,7 @@ class Logviewer
 
     /**
      * Open and parse the log.
-     * 
+     *
      * @access public
      * @return array
      */
@@ -100,7 +99,7 @@ class Logviewer
 
     /**
      * Delete the log.
-     * 
+     *
      * @access public
      * @return boolean
      */
@@ -115,7 +114,7 @@ class Logviewer
 
     /**
      * Get the log levels from psr/log.
-     * 
+     *
      * @access public
      * @return array
      */

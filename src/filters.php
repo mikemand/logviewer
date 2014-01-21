@@ -8,9 +8,9 @@ Route::filter('logviewer.logs', function () {
     foreach (Lang::get('logviewer::logviewer.sapi') as $sapi => $human) {
         $logs[$sapi]['sapi'] = $human;
         $dirs = Config::get('logviewer::log_dirs');
-        
+
         $files = array();
-        
+
         foreach ($dirs as $app => $dir) {
             $files[$app] = glob($dir.'/log-'.$sapi.'*', GLOB_BRACE);
             if (is_array($files[$app])) {
@@ -22,10 +22,10 @@ Route::filter('logviewer.logs', function () {
                 $files[$app] = array();
             }
         }
-        
+
         $logs[$sapi]['logs'] = $files;
     }
-    
+
     View::share('logs', $logs);
 });
 

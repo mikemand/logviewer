@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="{{ Config::get('app.locale') }}">
-    
+
     <head>
         <meta charset="utf-8">
         <title>{{ Lang::get('logviewer::logviewer.title') }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
         {{ HTML::style('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap.no-icons.min.css') }}
         {{ HTML::style('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css') }}
         {{ HTML::style('//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css') }}
         {{ HTML::style('packages/kmd/logviewer/css/style.css') }}
-        
+
         <link rel="shortcut icon" href="{{ URL::to('packages/kmd/logviewer/ico/favicon.png') }}">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ URL::to('packages/kmd/logviewer/ico/apple-touch-icon-144-precomposed.png') }}">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ URL::to('packages/kmd/logviewer/ico/apple-touch-icon-114-precomposed.png') }}">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ URL::to('packages/kmd/logviewer/ico/apple-touch-icon-72-precomposed.png') }}">
         <link rel="apple-touch-icon-precomposed" href="{{ URL::to('packages/kmd/logviewer/ico/apple-touch-icon-57-precomposed.png') }}">
-        
+
         <!--[if lt IE 9]>
             <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        
+
         {{ HTML::script('//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.min.js') }}
     </head>
-    
+
     <body>
-        
+
         <div class="wrapper">
-            
+
             <div class="container-fluid">
-                
+
                 <header>
                     <div class="navbar navbar-static-top navbar-inverse">
                         <div class="navbar-inner">
@@ -50,9 +50,9 @@
                         </div>
                     </div>
                 </header>
-                
+
                 <div class="row-fluid">
-                    
+
                     <div class="span2">
                         <div id="nav" class="well">
                             <ul class="nav nav-list">
@@ -76,7 +76,7 @@
                             </ul>
                         </div>
                     </div>
-                    
+
                     <div class="span10">
                         <div class="row-fluid{{ ! $has_messages ? ' hidden' : '' }}">
                             <div class="span12" id="messages">
@@ -133,13 +133,13 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
-                
+
             </div>
-            
+
         </div>
-        
+
         <div id="delete_modal" class="modal hide fade">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
@@ -153,12 +153,12 @@
                 <button class="btn btn-danger" data-dismiss="modal">{{ Lang::get('logviewer::logviewer.delete.modal.btn.no') }}</button>
             </div>
         </div>
-        
+
         {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js') }}
         <script>window.jQuery || document.write('<script src="{{ URL::to("packages/kmd/logviewer/js/jquery-1.10.2.min.js") }}"><\/script>')</script>
         {{ HTML::script('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js') }}
         {{ HTML::script('packages/kmd/logviewer/js/script.js') }}
-        
+
     </body>
-    
+
 </html>

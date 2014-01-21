@@ -103,7 +103,7 @@ By default, LogViewer will register itself a couple of routes:
  * `logviewer/$app/$sapi/$date/delete` -> Delete log from `$sapi` (see: [php\_sapi\_name](http://php.net/manual/en/function.php-sapi-name.php)) on `$date` (`Y-m-d` format).
  * `logviewer/$app/$sapi/$date/$level?` -> Show log from `$sapi` on `$date` with `$level` (if not supplied, defaults to all).
 
-LogViewer also registers a couple filters: 
+LogViewer also registers a couple filters:
 
  * `logviewer.logs`: aggregates all the logs in your configured monitored directories and shares them with the `$logs` variable.
  * `logviewer.messages`: Checks if there are success, error, or info flash messages in the session and sets the `$has_messages` variable as true or false.
