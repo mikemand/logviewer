@@ -12,7 +12,7 @@ Created and maintained by Micheal Mand. Copyright &copy; 2013. Licensed under th
 
 #A note about Laravel 4.1
 
-As of right now (2013-11-29), fresh Laravel 4.1 applications log things differently than they used to. While this doesn't *technically* break LogViewer, LogViewer also doesn't know how to handle these changes. Whether these changes are permanent or not is unclear, but here's a quick fix:
+As of right now (2013-11-29), fresh Laravel 4.1 applications log things differently than they used to. While this doesn't *technically* break LogViewer, LogViewer also doesn't know how to handle these changes. Here's a quick fix:
 
 In your `app/start/global.php`, [line 34](https://github.com/laravel/laravel/blob/develop/app/start/global.php#L34) change:
 
