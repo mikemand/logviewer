@@ -1,9 +1,9 @@
 <?php
 
 namespace Kmd\Logviewer;
- 
+
 use Illuminate\Support\Facades\Facade;
- 
+
 class LogviewerFacade extends Facade
 {
     /**

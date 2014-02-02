@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    
+
     'delete' => array(
         'modal' => array(
             'header' => 'Bist du dir sicher?',
@@ -36,5 +36,5 @@ return array(
         'cli' => 'CLI',
     ),
     'title' => 'Laravel 4 LogViewer',
-    
+
 );
