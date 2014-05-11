@@ -2,7 +2,7 @@
 
 use Carbon\Carbon;
 use Kmd\Logviewer\Logviewer;
-use Illuminate\Pagination\Environment;
+use Illuminate\Pagination\Factory;
 
 $filters = Config::get('logviewer::filters.global');
 
@@ -111,7 +111,7 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
 
             $levels = $logviewer->getLevels();
 
-            $paginator = new Environment(App::make('request'), App::make('view'), App::make('translator'));
+            $paginator = new Factory(App::make('request'), App::make('view'), App::make('translator'));
 
             $view = Config::get('logviewer::p_view');
 
