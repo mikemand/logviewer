@@ -2,7 +2,7 @@
 
 use Carbon\Carbon;
 use Kmd\Logviewer\Logviewer;
-use Illuminate\Pagination\Environment;
+use Illuminate\Pagination\Factory;
 
 $filters = Config::get('logviewer::filters.global');
 
