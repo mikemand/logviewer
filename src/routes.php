@@ -2,7 +2,6 @@
 
 use Carbon\Carbon;
 use Kmd\Logviewer\Logviewer;
-use Illuminate\Pagination\Environment;
 
 $filters = Config::get('logviewer::filters.global');
 
@@ -111,7 +110,15 @@ Route::group(array('before' => $filters['before'], 'after' => $filters['after'])
 
             $levels = $logviewer->getLevels();
 
-            $paginator = new Environment(App::make('request'), App::make('view'), App::make('translator'));
+            if (class_exists('Illuminate\Pagination\Factory')) {
+                $class = 'Illuminate\Pagination\Factory';
+            } elseif (class_exists('Illuminate\Pagination\Environment')) {
+                $class = 'Illuminate\Pagination\Environment';
+            } else {
+                throw new \Exception('A pagination class was not available.');
+            }
+
+            $paginator = new $class(App::make('request'), App::make('view'), App::make('translator'));
 
             $view = Config::get('logviewer::p_view');
 
