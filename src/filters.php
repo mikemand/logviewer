@@ -24,28 +24,21 @@ Route::filter('logviewer.logs', function () {
             } else {
                 $files[$app] = array();
             }
-        }
 
-        // List files from custom list
-        foreach ($dirs as $app => $dir) {
+            // List files from custom list
             if (strpos(php_sapi_name(), $sapi) !== false) {
                 foreach (Config::get('logviewer::custom_files') as $f) {
                     if (file_exists($dir . '/' . $f) && !in_array(basename($f), $files[$app])) {
                         $files[$app][] = $f;
                     }
                 }
-            }
-        }
 
-        // List files from custom file filter
-        foreach ($dirs as $app => $dir) {
-            if (strpos(php_sapi_name(), $sapi) !== false) {
+                // List files from custom file filter
                 foreach (Config::get('logviewer::custom_glob_filter') as $filter) {
-                    $custom_files = array();
-                    $custom_files[$app] = glob($dir . '/' . $filter, GLOB_BRACE);
+                    $custom_files = glob($dir . '/' . $filter, GLOB_BRACE);
 
-                    if (is_array($custom_files[$app])) {
-                        foreach ($custom_files[$app] as $f) {
+                    if (is_array($custom_files)) {
+                        foreach ($custom_files as $f) {
                             if (file_exists($f) && !in_array(basename($f), $files[$app])) {
                                 $files[$app][] = basename($f);
                             }
