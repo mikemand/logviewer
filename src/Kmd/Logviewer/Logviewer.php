@@ -67,7 +67,7 @@ class Logviewer
             $log_file = array($this->path . '/' . $this->date);
         }
 
-        if (!empty($log_file)) {
+        if (!empty($log_file) && file_exists($log_file[0])) {
             $this->empty = false;
             $file = File::get($log_file[0]);
 
