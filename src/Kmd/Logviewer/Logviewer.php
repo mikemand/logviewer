@@ -61,6 +61,12 @@ class Logviewer
 
         $log_file = glob($this->path.'/log-'.$this->sapi.'*-'.$this->date.'.txt');
 
+        // Looking for custom file, if daily $log_file not found
+        if (empty($log_file)) {
+            // $this->date contains custom file name
+            $log_file = array($this->path . '/' . $this->date);
+        }
+
         if (!empty($log_file)) {
             $this->empty = false;
             $file = File::get($log_file[0]);
