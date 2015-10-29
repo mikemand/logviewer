@@ -5,9 +5,12 @@ Route::filter('logviewer.logs', function () {
     if (!Lang::has('logviewer::logviewer.sapi')) {
         App::setLocale('en');
     }
+
+    $dirs = Config::get('logviewer::log_dirs');
+
+    // List daily files
     foreach (Lang::get('logviewer::logviewer.sapi') as $sapi => $human) {
         $logs[$sapi]['sapi'] = $human;
-        $dirs = Config::get('logviewer::log_dirs');
 
         $files = array();
 
@@ -20,6 +23,28 @@ Route::filter('logviewer.logs', function () {
                 }
             } else {
                 $files[$app] = array();
+            }
+
+            // List files from custom list
+            if (strpos(php_sapi_name(), $sapi) !== false) {
+                foreach (Config::get('logviewer::custom_files') as $f) {
+                    if (file_exists($dir . '/' . $f) && !in_array(basename($f), $files[$app])) {
+                        $files[$app][] = $f;
+                    }
+                }
+
+                // List files from custom file filter
+                foreach (Config::get('logviewer::custom_glob_filter') as $filter) {
+                    $custom_files = glob($dir . '/' . $filter, GLOB_BRACE);
+
+                    if (is_array($custom_files)) {
+                        foreach ($custom_files as $f) {
+                            if (file_exists($f) && !in_array(basename($f), $files[$app])) {
+                                $files[$app][] = basename($f);
+                            }
+                        }
+                    }
+                }
             }
         }
 
